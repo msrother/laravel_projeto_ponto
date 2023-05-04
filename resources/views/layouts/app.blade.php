@@ -11,7 +11,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Projeto</title>
+    <title>Controle de Ponto de Funcionários</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -26,7 +26,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Projeto
+                    Controle de Ponto de Funcionários
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -41,13 +41,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        @guest <!-- Diretiva do blade que permite mostrar apenas os conteudos para usuarios não autenticados -->
-                            @if (Route::has('sobre'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('sobre') }}">Sobre</a>
-                                </li>
-                            @endif
-                            
+                        @guest <!-- Diretiva do blade que permite mostrar apenas os conteudos para usuarios não autenticados -->                                                    
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -56,7 +50,13 @@
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Cadastre-se') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('sobre'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('sobre') }}">Sobre</a>
                                 </li>
                             @endif
                         @else
@@ -67,9 +67,9 @@
                                 </li>
                             @endif
 
-                            @if (Route::has('usuarios'))
+                            @if (Route::has('funcionarios'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('usuarios') }}">{{ __('Clientes') }}</a>                             
+                                    <a class="nav-link" href="{{ route('funcionarios') }}">{{ __('Funcionários') }}</a>                             
                                 </li>
                             @endif
                             
@@ -81,7 +81,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Sair') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

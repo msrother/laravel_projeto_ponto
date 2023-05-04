@@ -14,8 +14,8 @@ class Funcionarios extends Model
         $user = funcionarios::find($id);
         $user->name = $name;
         $user->email = $email;
-        $user->funcao = $funcao;
         $user->cpf = $cpf;
+        $user->funcao = $funcao;       
         $user->cidade = $cidade;
         $user->save();
     }

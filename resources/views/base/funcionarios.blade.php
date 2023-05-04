@@ -19,10 +19,10 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Funcao</th>
+                                    <th scope="col">Nome</th>                                 
+                                    <th scope="col">E-mail</th>
                                     <th scope="col">CPF</th>
+                                    <th scope="col">Função</th>
                                     <th scope="col">Cidade</th>
                                 </tr>
                             </thead>
@@ -30,10 +30,10 @@
                                 @foreach ($users as $user)
                                 <tr>
                                     <th scope="row">{{ $user->id }}</th>
-                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->nome }}</td>                                 
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->funcao }}</td>
                                     <td>{{ $user->cpf }}</td>
+                                    <td>{{ $user->funcao }}</td>
                                     <td>{{ $user->cidade }}</td>
                                     <td>
                                         <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#updateUserModal{{ $user->id }}">
@@ -56,7 +56,7 @@
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="form-group">
-                                                        <label for="name">Nome:</label>
+                                                        <label for="nome">Nome:</label>
                                                         <input type="text" class="form-control" name="name" value="{{ $user->name }}" required autofocus>
                                                     </div>
                                                     <div class="form-group">
@@ -64,13 +64,13 @@
                                                         <input type="email" class="form-control" name="email" value="{{ $user->email }}" required>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="funcao">Função:</label>
-                                                        <input type="funcao" class="form-control" name="funcao" value="{{ $user->funcao }}" required>
-                                                    </div>
-                                                    <div class="form-group">
                                                         <label for="cpf">CPF:</label>
                                                         <input type="cpf" class="form-control" name="cpf" value="{{ $user->cpf }}" required>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <label for="funcao">Função:</label>
+                                                        <input type="funcao" class="form-control" name="funcao" value="{{ $user->funcao }}" required>
+                                                    </div>                                     
                                                     <div class="form-group">
                                                         <label for="cidade">Cidade:</label>
                                                         <input type="cidade" class="form-control" name="cidade" value="{{ $user->cidade }}" required>

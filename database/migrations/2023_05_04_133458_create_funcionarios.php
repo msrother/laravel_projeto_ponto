@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->id();
-            $table->string('nome',100);
-            $table->string('cpf',11);
+            $table->string('nome',100);          
             $table->string('email',100);
-        //    $table->foreign()->references('id')->('cidade');
+            $table->string('cpf',11);
         //    $table->foreign()->references('id')->('funcao');
+        //    $table->foreign()->references('id')->('cidade');
+        
             $table->timestamps();
         });
     }
