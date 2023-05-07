@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-
+<head>
+    <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
+</head>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Lista de Funcionários') }}</div>
+                <div class="card-header titulo">{{ __('Lista de Funcionários') }}</div>
 
                 <div class="card-body">
                     @if (session('success'))
@@ -30,7 +32,7 @@
                                 @foreach ($users as $user)
                                 <tr>
                                     <th scope="row">{{ $user->id }}</th>
-                                    <td>{{ $user->nome }}</td>                                 
+                                    <td>{{ $user->name }}</td>                                 
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->cpf }}</td>
                                     <td>{{ $user->funcao }}</td>
@@ -56,7 +58,7 @@
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="form-group">
-                                                        <label for="nome">Nome:</label>
+                                                        <label for="name">Nome:</label>
                                                         <input type="text" class="form-control" name="name" value="{{ $user->name }}" required autofocus>
                                                     </div>
                                                     <div class="form-group">
