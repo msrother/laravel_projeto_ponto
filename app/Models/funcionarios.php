@@ -12,9 +12,9 @@ class Funcionarios extends Model
     public function updateUser($id, $name, $email)
     {
         $user = funcionarios::find($id);
-        $user->name = $name;
-        $user->email = $email;
-        $user->cpf = $cpf;
+        $user->name   = $name;
+        $user->email  = $email;
+        $user->cpf    = $cpf;
         $user->funcao = $funcao;       
         $user->cidade = $cidade;
         $user->save();

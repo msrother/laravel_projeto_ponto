@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<head>
+    <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
+</head>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Confirme a Senha') }}</div>
+                <div class="card-header titulo">{{ __('Confirme a Senha') }}</div>
 
                 <div class="card-body">
                     {{ __('Por favor, confirme sua senha antes de continuar.') }}
