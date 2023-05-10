@@ -27,7 +27,11 @@ Route::get('/noticias', function () {
 
 Route::get('/funcionarios', function () {
     return view('base.funcionarios');
-})->name('usuarios');
+})->name('funcionarios');
+
+Route::get('/cidade', function () {
+    return view('base.cidade');
+})->name('cidade');
 
 Auth::routes();
 
