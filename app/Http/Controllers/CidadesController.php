@@ -6,7 +6,7 @@ use App\Models\Cidade;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 
-class CidadeController extends Controller
+class CidadesController extends Controller
 {
     public function index()
     {
@@ -20,7 +20,7 @@ class CidadeController extends Controller
         $itensPaginas = 8; // número de itens por página
         $cidade = Cidade::paginate($itensPaginas);
 
-        return view('base.cidade', ['cidade' => $cidade]);
+        return view('base.cidades', ['cidade' => $cidade]);
     }
 
     public function deletar_cidade($id)
@@ -31,9 +31,9 @@ class CidadeController extends Controller
 
         if ($cidade) {
             $cidade->delete();
-            return view('base.cidade')->with('success', 'Cidade excluída com sucesso!');
+            return view('base.cidades')->with('success', 'Cidade excluída com sucesso!');
         } else {
-            return view('base.cidade')->with('error', 'Cidade não encontrada.');
+            return view('base.cidades')->with('error', 'Cidade não encontrada.');
         }
     }
 
@@ -48,7 +48,7 @@ class CidadeController extends Controller
 
         $cidade = new cidade;
         $cidade->updateCidade($id, $request->nome, $request->uf);
-        return redirect('/cidade');
+        return redirect('/cidades');
         
         // SEM MODEL
 

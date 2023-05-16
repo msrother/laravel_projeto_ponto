@@ -29,9 +29,9 @@ Route::get('/funcionarios', function () {
     return view('base.funcionarios');
 })->name('funcionarios');
 
-Route::get('/cidade', function () {
-    return view('base.cidade');
-})->name('cidade');
+Route::get('/cidades', function () {
+    return view('base.cidades');
+})->name('cidades');
 
 Auth::routes();
 
@@ -45,9 +45,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Essa rota pode ser modificada de acordo com as necessidades, incluindo alterações no método HTTP utilizado, na URL e no controlador associado.
 */
 
+//funcionários
 Route::get('/funcionarios', [App\Http\Controllers\FuncionariosController::class, 'index']);
 
 Route::delete('/funcionarios/{id}',[App\Http\Controllers\FuncionariosController::class, 'deletar_funcionario'])->name('deletar_funcionario');
 
 Route::put('/funcionarios/{id}',[App\Http\Controllers\FuncionariosController::class, 'atualizar_funcionario'])->name('atualizar_funcionario');
+
+//cidades
+Route::get('/cidades', [App\Http\Controllers\CidadesController::class, 'index']);
+
+Route::delete('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'deletar_cidade'])->name('deletar_cidade');
+
+Route::put('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'atualizar_cidade'])->name('atualizar_cidade');
 

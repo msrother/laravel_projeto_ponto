@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Funcionarios;
+use App\Models\Funcionario;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,7 +18,7 @@ class FuncionariosController extends Controller
         // DESCRIÇÃO: Usado para criar paginação na View Colaboradores.
 
         $itensPaginas = 8; // número de itens por página
-        $users = Funcionarios::paginate($itensPaginas);
+        $users = Funcionario::paginate($itensPaginas);
 
         return view('base.funcionarios', ['users' => $users]);
     }
@@ -27,7 +27,7 @@ class FuncionariosController extends Controller
     {
         // DESCRIÇÃO: Busca o ID do usuário para realizar a exclusão do registro
         // Quando encontrado, exclui o registro no banco de dados.
-        $user = Funcionarios::find($id);
+        $user = Funcionario::find($id);
 
         if ($user) {
             $user->delete();
@@ -46,7 +46,7 @@ class FuncionariosController extends Controller
         //Essa função atualiza o nome e o email do usuário com o $id. 
         //return redirect('/colaboradores'); redireciona o usuário para a página /colaboradores.
 
-        $user = new funcionarios;
+        $user = new funcionario;
         $user->updateUser($id, $request->name, $request->email);
         return redirect('/funcionarios');
         

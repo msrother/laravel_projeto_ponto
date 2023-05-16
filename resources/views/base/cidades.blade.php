@@ -29,10 +29,10 @@
                                 </tr>
                             </thead>
                             <tbody>                            
-                                @foreach ($cidades as $cidade)
+                                @foreach ($cidade as $cidade)
                                 <tr>
                                     <th scope="row">{{ $cidade->id }}</th>
-                                    <td>{{ $cidade->name }}</td>                                                                     
+                                    <td>{{ $cidade->nome }}</td>                                                                     
                                     <td>{{ $cidade->uf }}</td>
                                     <td>
                                         <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#updateCidadeModal{{ $cidade->id }}">
@@ -51,7 +51,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST" action="{{ url('/cidade/'.$cidade->id) }}">
+                                                <form method="POST" action="{{ url('/cidades/'.$cidade->id) }}">
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="form-group">
@@ -74,7 +74,7 @@
                                 @endforeach                               
                             </tbody>                   
                         </table>
-                        {{ $users->links('pagination::bootstrap-4') }} 
+                      
                     @endif   
                 </div>
             </div>
@@ -87,5 +87,5 @@
 
 @section('scripts')
     {{-- A função asset() é uma função do Laravel que gera uma URL completa para um arquivo localizado em sua pasta public --}}
-    <script src="{{ asset('js/funcionarios.js') }}"></script>
+    <script src="{{ asset('js/cidade.js') }}"></script>
 @endsection

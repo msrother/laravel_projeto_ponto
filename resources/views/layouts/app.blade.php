@@ -74,9 +74,9 @@
                                 </li>
                             @endif
 
-                            @if (Route::has('cidade'))
+                            @if (Route::has('cidades'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('cidade') }}">{{ __('Cidade') }}</a>                             
+                                    <a class="nav-link" href="{{ route('cidades') }}">{{ __('Cidade') }}</a>                             
                                 </li>
                             @endif
 
