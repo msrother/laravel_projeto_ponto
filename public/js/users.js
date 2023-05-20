@@ -17,7 +17,7 @@ function deleteUser(id, name) {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            axios.delete(`/funcionarios/${id}`)
+            axios.delete(`/users/${id}`)
                 .then(() => {
                     Swal.fire(
                         'Excluído!',
