@@ -18,9 +18,9 @@ class CidadesController extends Controller
         // DESCRIÇÃO: Usado para criar paginação na View Colaboradores.
 
         $itensPaginas = 8; // número de itens por página
-        $cidade = Cidade::paginate($itensPaginas);
+        $cidades = Cidade::paginate($itensPaginas);
 
-        return view('base.cidades', ['cidade' => $cidade]);
+        return view('base.cidades', ['cidades' => $cidades]);
     }
 
     public function deletar_cidade($id)
@@ -73,9 +73,9 @@ class CidadesController extends Controller
         // $user->email = $request->input('email');
         // $user->save();
 
-        // return response()->json([
-        //     'success' => true,
-        //     'message' => 'Usuário atualizado com sucesso'
-        // ]);
+        return response()->json([
+            'success' => true,
+            'message' => 'Cidade atualizada com sucesso'
+        ]);
     }
 }

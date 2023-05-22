@@ -23,7 +23,7 @@ class UsersController extends Controller
         return view('base.users', ['users' => $users]);
     }
 
-    public function deletar_funcionario($id)
+    public function deletar_user($id)
     {
         // DESCRIÇÃO: Busca o ID do usuário para realizar a exclusão do registro
         // Quando encontrado, exclui o registro no banco de dados.

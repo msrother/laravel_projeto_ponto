@@ -17,7 +17,7 @@ function deleteCidade(id, nome) {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            axios.delete(`/cidade/${id}`)
+            axios.delete(`/cidades/${id}`)
                 .then(() => {
                     Swal.fire(
                         'Excluído!',
