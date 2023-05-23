@@ -7,6 +7,24 @@
     Caso ocorra algum erro durante a exclusão, uma mensagem de erro é exibida.
 */
 
+
+$(document).ready(function() {
+    $('#proxima-pagina').click(function() {
+        // Fazer uma requisição AJAX para obter a próxima página
+        $.ajax({
+            url: '{{ $cidades->nextPageUrl() }}',
+            method: 'GET',
+            success: function(response) {
+                // Atualizar o container dos dados com a próxima página
+                $('#container').html(response);
+            }
+        });
+    });
+
+
+
+
+
 function deleteCidade(id, nome) {
     Swal.fire({
         title: 'Tem certeza?',

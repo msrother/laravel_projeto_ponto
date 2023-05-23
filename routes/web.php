@@ -53,28 +53,37 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //users administrativos
 Route::get('/users', [App\Http\Controllers\UsersController::class, 'index']);
 
-Route::delete('/users/{id}',[App\Http\Controllers\UsersController::class, 'deletar_user'])->name('deletar_user');
+
 
 Route::put('/users/{id}',[App\Http\Controllers\UsersController::class, 'atualizar_user'])->name('atualizar_user');
+
+Route::delete('/users/{id}',[App\Http\Controllers\UsersController::class, 'deletar_user'])->name('deletar_user');
 
 
 //funcionários
 Route::get('/funcionarios', [App\Http\Controllers\FuncionariosController::class, 'index']);
 
-Route::delete('/funcionarios/{id}',[App\Http\Controllers\FuncionariosController::class, 'deletar_funcionario'])->name('deletar_funcionario');
+
 
 Route::put('/funcionarios/{id}',[App\Http\Controllers\FuncionariosController::class, 'atualizar_funcionario'])->name('atualizar_funcionario');
+
+Route::delete('/funcionarios/{id}',[App\Http\Controllers\FuncionariosController::class, 'deletar_funcionario'])->name('deletar_funcionario');
 
 
 //cidades
 Route::get('/cidades', [App\Http\Controllers\CidadesController::class, 'index']);
 
-Route::delete('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'deletar_cidade'])->name('deletar_cidade');
+Route::post('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'criar_cidade'])->name('criar_cidade');
 
 Route::put('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'atualizar_cidade'])->name('atualizar_cidade');
 
+Route::delete('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'deletar_cidade'])->name('deletar_cidade');
+
+
+
 
 //função
+
 
 
 //ponto

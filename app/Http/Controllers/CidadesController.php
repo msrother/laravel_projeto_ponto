@@ -48,7 +48,7 @@ class CidadesController extends Controller
 
         $cidade = new cidade;
         $cidade->updateCidade($id, $request->nome, $request->uf);
-        return redirect('/cidades');
+        return redirect('/cidades')->with('success', 'Cidade atualizada com sucesso!');
         
         // SEM MODEL
 
@@ -73,9 +73,26 @@ class CidadesController extends Controller
         // $user->email = $request->input('email');
         // $user->save();
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Cidade atualizada com sucesso'
+    }    
+    
+    public function criar_cidade(Request $request)
+    {
+            // $request->validate([
+            //     'nome' => 'required',
+            //     'uf' => 'required|max:2',
+            // ]);
+    
+        $cidade = Cidade::create([
+            'nome' => $request->nome,
+            'uf' => $request->uf,
         ]);
+
+        return redirect('/cidades')->with('success', 'Cidade criada com sucesso!');
+            
+
+
+
+        
+       
     }
 }

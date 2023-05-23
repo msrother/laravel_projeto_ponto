@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
-{{-- substituido user por cidade --}}
-
 
 @section('content')
-<head>
+<head>   
     <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
+    <script src="{{ mix('js/app.js') }}"></script>
 </head>
 <div class="container">
     <div class="row justify-content-center">
@@ -25,12 +24,8 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nome</th>                                 
-                                    <th scope="col">UF</th> 
-                                    <th>                          
-                                        <button type="submit" class="btn btn-sm btn-primary" data-toggle="modal" >
-                                            Inserir
-                                        </button>                                   
-                                    </th>
+                                    <th scope="col">UF</th>                                     
+                                    <th scope="col">Botões</th>                                    
                                 </tr>
                             </thead>
                             <tbody>                            
@@ -38,7 +33,7 @@
                                 <tr>                                
                                     <th scope="row">{{ $cidade->id }}</th>
                                     <td>{{ $cidade->nome }}</td>                                                                     
-                                    <td>{{ $cidade->uf }}</td>
+                                    <td>{{ $cidade->uf }}</td>                                                                      
                                     <td>
                                                               
                                         <button type="submit" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#insertCidadeModal{{ $cidade->id }}">
@@ -49,7 +44,8 @@
                                         <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#updateCidadeModal{{ $cidade->id }}">
                                             Editar
                                         </button>
-                                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteCidade({{ $cidade->id }}, '{{ $cidade->name }}')">Excluir</button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteCidade({{ $cidade->id }}, '{{ $cidade->nome }}')">Excluir</button>
+                                       
                                     </td>
                                 </tr>
 
@@ -68,10 +64,10 @@
                                             <div class="modal-body">
                                                 <form method="POST" action="{{ url('/cidades/'.$cidade->id) }}">
                                                     @csrf
-                                                    @method('PUT')
+                                                    @method('POST')
                                                     <div class="form-group">
                                                         <label for="nome">Nome:</label>
-                                                        <input type="text" class="form-control" name="nome" value="{{ $cidade->nome }}" required autofocus>
+                                                        <input placeholder="Digite o nome da cidade" type="text" class="form-control" name="nome" value="{{ $cidade->nome }}" required autofocus>
                                                     </div>                                                                                                      
                                                     <div class="form-group">
                                                         <label for="uf">UF:</label>
@@ -79,7 +75,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                        <button type="submit" id="atualizar_cidade" class="btn btn-primary">Atualizar</button>
+                                                        <button type="submit" id="criar_cidade" class="btn btn-primary">Salvar</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -124,7 +120,9 @@
                                 @endforeach                               
                             </tbody>                   
                         </table>
-                      
+                            @if ($cidades->hasMorePages())
+                                <button id="proxima-pagina" class="btn btn-primary">Próxima Página</button>
+                            @endif                      
                     @endif   
                 </div>
             </div>
@@ -137,5 +135,5 @@
 
 @section('scripts')
     {{-- A função asset() é uma função do Laravel que gera uma URL completa para um arquivo localizado em sua pasta public --}}
-    <script src="{{ asset('js/cidades.js') }}"></script>
+    <script src="{{ asset('js/cidades.js') }}"></script> 
 @endsection
