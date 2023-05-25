@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ponto', function (Blueprint $table) {
+        Schema::create('funcionarios', function (Blueprint $table) {
             $table->id();
-            $table->foreign()->references('id')->on('funcionarios');
-            $table->date('data');
-            $table->time('entrada');
-            $table->time('saida');
-            $table->timestamps();
+            $table->string('nome',100);          
+            $table->string('email',100);
+            $table->string('cpf',11);
+            // $table->foreign()->references('id')->('funcao');
+            // $table->foreign()->references('id')->('cidade');
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ponto');
+        Schema::dropIfExists('funcionarios');
     }
 };
