@@ -8,18 +8,18 @@
 */
 
 
-$(document).ready(function() {
-    $('#proxima-pagina').click(function() {
-        // Fazer uma requisição AJAX para obter a próxima página
-        $.ajax({
-            url: '{{ $cidades->nextPageUrl() }}',
-            method: 'GET',
-            success: function(response) {
-                // Atualizar o container dos dados com a próxima página
-                $('#container').html(response);
-            }
-        });
-    });
+// $(document).ready(function() {
+//     $('#proxima-pagina').click(function() {
+//         // Fazer uma requisição AJAX para obter a próxima página
+//         $.ajax({
+//             url: '{{ $cidades->nextPageUrl() }}',
+//             method: 'GET',
+//             success: function(response) {
+//                 // Atualizar o container dos dados com a próxima página
+//                 $('#container').html(response);
+//             }
+//         });
+//     });
 
 
 
@@ -54,4 +54,4 @@ function deleteCidade(id, nome) {
                 });
         }
     });
-}
+};

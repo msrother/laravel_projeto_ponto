@@ -68,6 +68,12 @@
                                 </li>
                             @endif
 
+                            @if (Route::has('users'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('users') }}">{{ __('Usuários Administrativos') }}</a>                             
+                                </li>
+                            @endif
+
                             @if (Route::has('funcionarios'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('funcionarios') }}">{{ __('Funcionários') }}</a>                             
@@ -76,7 +82,7 @@
 
                             @if (Route::has('cidades'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('cidades') }}">{{ __('Cidade') }}</a>                             
+                                    <a class="nav-link" href="{{ route('cidades') }}">{{ __('Cidades') }}</a>                             
                                 </li>
                             @endif
 

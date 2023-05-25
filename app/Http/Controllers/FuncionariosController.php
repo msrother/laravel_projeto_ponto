@@ -17,7 +17,7 @@ class FuncionariosController extends Controller
 
         // DESCRIÇÃO: Usado para criar paginação na View Colaboradores.
 
-        $itensPaginas = 8; // número de itens por página
+        $itensPaginas = 6; // número de itens por página
         $users = Funcionario::paginate($itensPaginas);
 
         return view('base.funcionarios', ['users' => $users]);

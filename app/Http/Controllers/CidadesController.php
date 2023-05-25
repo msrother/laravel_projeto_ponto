@@ -17,7 +17,7 @@ class CidadesController extends Controller
 
         // DESCRIÇÃO: Usado para criar paginação na View Colaboradores.
 
-        $itensPaginas = 8; // número de itens por página
+        $itensPaginas = 6; // número de itens por página
         $cidades = Cidade::paginate($itensPaginas);
 
         return view('base.cidades', ['cidades' => $cidades]);
