@@ -82,9 +82,9 @@ Route::delete('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'd
 
 
 
-//função
+//cargos
 
 
 
-//ponto
+//pontos
 

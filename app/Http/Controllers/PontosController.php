@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class FuncaoController extends Controller
+class PontosController extends Controller
 {
     //
 }
