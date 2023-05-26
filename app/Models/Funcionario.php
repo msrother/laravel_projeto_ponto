@@ -7,17 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Funcionario extends Model
 
 {
-    protected $table = 'users';
+    protected $table = 'funcionarios';
+    
+    protected $fillable = ['nome', 'uf'];
 
-    public function updateUser($id, $name, $email)
+    public function updateFuncionario($id, $nome, $email, $cpf, $cidade, $cargo)
     {
-        $user = funcionario::find($id);
-        $user->name   = $name;
-        $user->email  = $email;
-        $user->cpf    = $cpf;
-        $user->funcao = $funcao;       
-        $user->cidade = $cidade;
-        $user->save();
+        $funcionario = funcionario::find($id);
+        $funcionario->nome   = $name;
+        $funcionario->email  = $email;
+        $funcionario->cpf    = $cpf;              
+        $funcionario->cidade = $cidade;
+        $funcionario->cargo  = $cargo; 
+        $funcionario->save();
     }
 
 }

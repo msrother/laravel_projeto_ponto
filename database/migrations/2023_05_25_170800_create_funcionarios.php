@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('nome',100);          
             $table->string('email',100);
             $table->string('cpf',11);
-            // $table->foreign()->references('id')->('funcao');
-            // $table->foreign()->references('id')->('cidade');
+            // $table->foreign()->references('id')->('cidades');
+            // $table->foreign()->references('id')->('cargos'); 
+            $table->timestamps();           
         });
     }
 

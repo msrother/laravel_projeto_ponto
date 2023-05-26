@@ -17,7 +17,7 @@ class UsersController extends Controller
 
         // DESCRIÇÃO: Usado para criar paginação na View Colaboradores.
 
-        $itensPaginas = 6; // número de itens por página
+        $itensPaginas = 5; // número de itens por página
         $users = User::paginate($itensPaginas);
 
         return view('base.users', ['users' => $users]);

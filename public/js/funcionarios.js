@@ -7,10 +7,10 @@
     Caso ocorra algum erro durante a exclusão, uma mensagem de erro é exibida.
 */
 
-function deleteUser(id, name) {
+function deleteFuncionario(id, nome) {
     Swal.fire({
         title: 'Tem certeza?',
-        text: `Você está prestes a excluir o usuário ${name}.`,
+        text: `Você está prestes a excluir ${nome}.`,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Sim, excluir',
@@ -21,7 +21,7 @@ function deleteUser(id, name) {
                 .then(() => {
                     Swal.fire(
                         'Excluído!',
-                        'O usuário foi excluído com sucesso.',
+                        'Funcionário excluído com sucesso.',
                         'success'
                     ).then(() => {
                         location.reload();
@@ -30,7 +30,7 @@ function deleteUser(id, name) {
                 .catch(() => {
                     Swal.fire(
                         'Erro!',
-                        'Não foi possível excluir o usuário.',
+                        'Não foi possível excluir o funcionário.',
                         'error'
                     );
                 });
