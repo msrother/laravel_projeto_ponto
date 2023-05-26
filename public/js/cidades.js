@@ -8,23 +8,6 @@
 */
 
 
-// $(document).ready(function() {
-//     $('#proxima-pagina').click(function() {
-//         // Fazer uma requisição AJAX para obter a próxima página
-//         $.ajax({
-//             url: '{{ $cidades->nextPageUrl() }}',
-//             method: 'GET',
-//             success: function(response) {
-//                 // Atualizar o container dos dados com a próxima página
-//                 $('#container').html(response);
-//             }
-//         });
-//     });
-
-
-
-
-
 function deleteCidade(id, nome) {
     Swal.fire({
         title: 'Tem certeza?',
@@ -39,7 +22,7 @@ function deleteCidade(id, nome) {
                 .then(() => {
                     Swal.fire(
                         'Excluído!',
-                        'A cidade foi excluída com sucesso.',
+                        'Cidade excluída com sucesso.',
                         'success'
                     ).then(() => {
                         location.reload();

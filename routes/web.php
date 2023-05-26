@@ -53,7 +53,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //users administrativos
 Route::get('/users', [App\Http\Controllers\UsersController::class, 'index']);
 
-
+Route::post('/users/{id}',[App\Http\Controllers\UsersController::class, 'criar_user'])->name('criar_user');
 
 Route::put('/users/{id}',[App\Http\Controllers\UsersController::class, 'atualizar_user'])->name('atualizar_user');
 
@@ -63,7 +63,7 @@ Route::delete('/users/{id}',[App\Http\Controllers\UsersController::class, 'delet
 //funcionários
 Route::get('/funcionarios', [App\Http\Controllers\FuncionariosController::class, 'index']);
 
-
+Route::post('/funcionarios/{id}',[App\Http\Controllers\FuncionariosController::class, 'criar_funcionario'])->name('criar_funcionario');
 
 Route::put('/funcionarios/{id}',[App\Http\Controllers\FuncionariosController::class, 'atualizar_funcionario'])->name('atualizar_funcionario');
 

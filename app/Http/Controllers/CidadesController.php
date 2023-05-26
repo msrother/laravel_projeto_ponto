@@ -17,7 +17,7 @@ class CidadesController extends Controller
 
         // DESCRIÇÃO: Usado para criar paginação na View Colaboradores.
 
-        $itensPaginas = 6; // número de itens por página
+        $itensPaginas = 5; // número de itens por página
         $cidades = Cidade::paginate($itensPaginas);
 
         return view('base.cidades', ['cidades' => $cidades]);
@@ -31,9 +31,9 @@ class CidadesController extends Controller
 
         if ($cidade) {
             $cidade->delete();
-            return view('base.cidades')->with('success', 'Cidade excluída com sucesso!');
+            return view('base.cidades')->with('success', 'Registro excluído com sucesso!');
         } else {
-            return view('base.cidades')->with('error', 'Cidade não encontrada.');
+            return view('base.cidades')->with('error', 'Registro não encontrado.');
         }
     }
 
@@ -48,7 +48,7 @@ class CidadesController extends Controller
 
         $cidade = new cidade;
         $cidade->updateCidade($id, $request->nome, $request->uf);
-        return redirect('/cidades')->with('success', 'Cidade atualizada com sucesso!');
+        return redirect('/cidades')->with('success', 'Registro atualizado com sucesso!');
         
         // SEM MODEL
 
@@ -87,12 +87,7 @@ class CidadesController extends Controller
             'uf' => $request->uf,
         ]);
 
-        return redirect('/cidades')->with('success', 'Cidade criada com sucesso!');
-            
-
-
-
-        
-       
+        return redirect('/cidades')->with('success', 'Registro criado com sucesso!');
+      
     }
 }

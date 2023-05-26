@@ -17,23 +17,23 @@ class FuncionariosController extends Controller
 
         // DESCRIÇÃO: Usado para criar paginação na View Colaboradores.
 
-        $itensPaginas = 6; // número de itens por página
-        $users = Funcionario::paginate($itensPaginas);
+        $itensPaginas = 5; // número de itens por página
+        $funcionarios = Funcionario::paginate($itensPaginas);
 
-        return view('base.funcionarios', ['users' => $users]);
+        return view('base.funcionarios', ['funcionarios' => $funcionarios]);
     }
 
     public function deletar_funcionario($id)
     {
         // DESCRIÇÃO: Busca o ID do usuário para realizar a exclusão do registro
         // Quando encontrado, exclui o registro no banco de dados.
-        $user = Funcionario::find($id);
+        $funcionario = Funcionario::find($id);
 
-        if ($user) {
-            $user->delete();
-            return view('base.funcionarios')->with('success', 'Usuário excluído com sucesso!');
+        if ($funcionario) {
+            $funcionario->delete();
+            return view('base.funcionarios')->with('success', 'Registro excluído com sucesso!');
         } else {
-            return view('base.funcionarios')->with('error', 'Usuário não encontrado.');
+            return view('base.funcionarios')->with('error', 'Registro não encontrado.');
         }
     }
 
@@ -46,36 +46,24 @@ class FuncionariosController extends Controller
         //Essa função atualiza o nome e o email do usuário com o $id. 
         //return redirect('/colaboradores'); redireciona o usuário para a página /colaboradores.
 
-        $user = new funcionario;
-        $user->updateUser($id, $request->name, $request->email);
-        return redirect('/funcionarios');
-        
-        // SEM MODEL
-
-        // $user = Colaboradores::find($id);
-        // $user->name = $request->input('name');
-        // $user->email = $request->input('email');
-        // $user->save();
-        
-        // return view('colaboradores')->with('success', 'Usuário Atualizado com sucesso!');
-
-        // UPDATE COM JSON
-
-        // $user = Colaboradores::find($id);
-        // if (!$user) {
-        //     return response()->json([
-        //         'success' => false,
-        //         'message' => 'Usuário não encontrado'
-        //     ]);
-        // }
-
-        // $user->name = $request->input('name');
-        // $user->email = $request->input('email');
-        // $user->save();
-
-        // return response()->json([
-        //     'success' => true,
-        //     'message' => 'Usuário atualizado com sucesso'
-        // ]);
+        $funcionario = new funcionario;
+        $funcionario->updateFuncionario($id, $request->nome, $request->email, $request->cpf, $request->cidade, $request->cargo);
+        return redirect('/funcionarios')->with('success', 'Registro atualizado com sucesso!');;
+               
     }
+
+    public function criar_funcionario(Request $request)
+    {        
+    
+        $funcionario = Funcionario::create([
+            'nome'  => $request->nome,
+            'email' => $request->email,
+            'cpf'   => $request->cpf,
+            'cidade'=> $request->cidade,
+            'cargo' => $request->cargo,
+        ]);
+
+        return redirect('/funcionarios')->with('success', 'Registro criado com sucesso!');
+      
+    }    
 }

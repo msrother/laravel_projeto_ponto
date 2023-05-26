@@ -10,7 +10,7 @@
   color: #333333;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   margin-bottom: 1.5rem;
-  background-color: rgb(173, 217, 234);    
+  background-color: rgb(233, 230, 213);    
 }
 
 .botao {
@@ -29,10 +29,8 @@
   background-color: #272e52;
 }
 
-.sucesso {
-  background-color: #dff0d8;
-  color: #3c763d;
-  border-color: #d6e9c6;
-  padding: 10px;
-  font-size: 10px;
+.custom-alert {
+  padding: 0.5rem 1rem; 
+  font-size: 0.9rem; 
+  line-height: 1.4; 
 }
