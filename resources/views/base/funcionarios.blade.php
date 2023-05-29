@@ -44,7 +44,7 @@
                                     <td>{{ $funcionario->nome }}</td>                                                                     
                                     <td>{{ $funcionario->email }}</td>                                                                      
                                     <td>{{ $funcionario->cpf }}</td>                                                                     
-                                    <td>{{ $funcionario->cidade }}</td>                                                                     
+                                    <td>{{ $funcionario->converterIdCidade->nome }}</td>                                                                     
                                     <td>{{ $funcionario->cargo }}</td>                                                                     
                                     <td>                                               
                                         <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#updateFuncionarioModal{{ $funcionario->id }}">
@@ -84,7 +84,18 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="cidade">Cidade:</label>
-                                                        <input placeholder="Selecione a cidade" type="text" class="form-control" name="cidade" value="" required>
+                                                        <!-- <input placeholder="Selecione a cidade" type="text" class="form-control" name="cidade" value="" required> -->
+                                                        
+                                                        <select name="cidade_id" id="cidade_id" class="form-control">
+                                                            <!-- @foreach($funcionarios as $funcionario)
+                                                                <option value="{{ $funcionario->id }}">{{ $funcionario->nome }}</option>
+                                                            @endforeach -->
+
+                                                            @foreach($funcionarios as $funcionario)
+                                                                <option value="{{ $funcionario->converterIdCidade->nome }}">{{ $funcionario->converterIdCidade->nome }}</option>
+                                                            @endforeach                                                            
+                                                        </select>
+                                                        
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="cargo">Cargo:</label>
@@ -128,7 +139,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="cidade">Cidade:</label>
-                                                        <input type="text" class="form-control" name="cidade" value="{{ $funcionario->cidade }}" required>
+                                                        <input type="text" class="form-control" name="cidade" value="{{ $funcionario->cidade_id }}" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="cargo">Cargo:</label>

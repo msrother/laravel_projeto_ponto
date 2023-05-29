@@ -17,15 +17,15 @@ class FuncionariosTableSeeder extends Seeder
             'nome'   =>'Amadeo',
             'email'  =>'amd@ij.com',
             'cpf'    =>'01298765319',
-         //   'cidade' =>'Passo Fundo',
-         //   'cargo'  =>'Assistente administrativo',
+            'cidade_id' =>'1',
+         //   'cargo_id'  =>'Assistente administrativo',
         ]);
         
         $funcionario->create([
             'nome'   =>'Clodoaldo',
             'email'  =>'clodo@ewrs.com.br',
             'cpf'    =>'73698765835',
-         //   'cidade' =>'Porto Alegre',
+            'cidade_id' =>'3',
          //   'cargo'  =>'Auxiliar de serviços gerais',
         ]);
 
@@ -33,7 +33,7 @@ class FuncionariosTableSeeder extends Seeder
             'nome'   =>'Creuza',
             'email'  =>'creu@ewrs.com.br',
             'cpf'    =>'35698675300',
-         //   'cidade' =>'Erechim',
+            'cidade_id' =>'2',
          //   'cargo'  =>'Assistente de marketing',
         ]);
 
@@ -41,7 +41,7 @@ class FuncionariosTableSeeder extends Seeder
             'nome'   =>'Erikson',
             'email'  =>'erk@ewrs.com.br',
             'cpf'    =>'45696677300',
-         //   'cidade' =>'Tapejara',
+            'cidade_id' =>'1',
          //   'cargo'  =>'Supervisor',
         ]);
 
@@ -49,7 +49,7 @@ class FuncionariosTableSeeder extends Seeder
             'nome'   =>'Madeleine',
             'email'  =>'madline@ewrs.com.br',
             'cpf'    =>'22694475300',
-         //   'cidade' =>'Passo Fundo',
+            'cidade_id' =>'3',
          //   'cargo'  =>'Diretora',
         ]);
     }

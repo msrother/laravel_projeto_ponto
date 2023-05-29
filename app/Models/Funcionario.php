@@ -9,18 +9,27 @@ class Funcionario extends Model
 {
     protected $table = 'funcionarios';
     
-    protected $fillable = ['nome', 'uf'];
+    protected $fillable = ['nome', 'email', 'cpf'];    //, 'cidade_id', 'cargo_id'
 
-    public function updateFuncionario($id, $nome, $email, $cpf, $cidade, $cargo)
+    public function updateFuncionario($id, $nome, $email, $cpf)   //, $cidade_id, $cargo_id
     {
         $funcionario = funcionario::find($id);
-        $funcionario->nome   = $name;
+        $funcionario->nome   = $nome;
         $funcionario->email  = $email;
         $funcionario->cpf    = $cpf;              
-        $funcionario->cidade = $cidade;
-        $funcionario->cargo  = $cargo; 
+        $funcionario->cidade_id = $cidade_id;
+      //  $funcionario->cargo_id  = $cargo_id; 
         $funcionario->save();
     }
+
+    public function converterIdCidade()
+    {
+        return $this->belongsTo(Cidade::class, 'cidade_id');
+
+
+        //após inserir isto, somente está funcionando o update do último registro cadastrado
+    }
+
 
 }
 ?>
