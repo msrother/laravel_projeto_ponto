@@ -76,19 +76,19 @@
                                                     </div>                                                                                                      
                                                     <div class="form-group">
                                                         <label for="email">E-mail:</label>
-                                                        <input type="email" class="form-control" name="email" value="{{ $funcionario->email }}" required>
+                                                        <input placeholder="Digite o e-mail" type="email" class="form-control" name="email" value="" required>
                                                     </div>                                                                                                        
                                                     <div class="form-group">
                                                         <label for="cpf">CPF:</label>
-                                                        <input type="cpf" class="form-control" name="cpf" maxlength="11" value="{{ $funcionario->cpf }}" required>
+                                                        <input placeholder="Digite o CPF" type="cpf" class="form-control" name="cpf" maxlength="11" value="" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="cidade">Cidade:</label>
-                                                        <input type="text" class="form-control" name="cidade" value="{{ $funcionario->cidade }}" required>
+                                                        <input placeholder="Selecione a cidade" type="text" class="form-control" name="cidade" value="" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="cargo">Cargo:</label>
-                                                        <input type="text" class="form-control" name="cargo" value="{{ $funcionario->cargo }}" required>
+                                                        <input placeholder="Selecione o cargo" type="text" class="form-control" name="cargo" value="" required>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -124,7 +124,7 @@
                                                     </div>                                                                                                        
                                                     <div class="form-group">
                                                         <label for="cpf">CPF:</label>
-                                                        <input type="cpf" class="form-control" name="cpf" maxlength="11" value="{{ $funcionario->uf }}" required>
+                                                        <input type="cpf" class="form-control" name="cpf" maxlength="11" value="{{ $funcionario->cpf }}" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="cidade">Cidade:</label>
