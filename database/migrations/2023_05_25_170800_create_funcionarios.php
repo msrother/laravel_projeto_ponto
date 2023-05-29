@@ -16,9 +16,15 @@ return new class extends Migration
             $table->string('nome',100);          
             $table->string('email',100);
             $table->string('cpf',11);
-            // $table->foreign()->references('id')->('cidades');
+            $table->unsignedBigInteger('cidade_id');
+         //   $table->unsignedBigInteger('cargo_id');
+           
+            // $table->foreign()->references('id')->('cidades');  antigos
             // $table->foreign()->references('id')->('cargos'); 
-            $table->timestamps();           
+            $table->timestamps();    
+            
+            $table->foreign('cidade_id')->references('id')->on('cidades');
+         //   $table->foreign('cargo_id')->references('id')->on('cargos');
         });
     }
 

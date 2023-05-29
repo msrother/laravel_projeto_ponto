@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pontos', function (Blueprint $table) {
             $table->id();
-            $table->foreign()->references('id')->on('funcionarios');
+           // $table->foreign()->references('id')->on('funcionarios');
             $table->date('data');
             $table->time('entrada');
             $table->time('saida');

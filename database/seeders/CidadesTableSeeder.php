@@ -32,6 +32,11 @@ class CidadesTableSeeder extends Seeder
             'nome'=>'Porto Alegre',
             'uf'  =>'RS',
         ]);
+
+        $cidade->create([
+            'nome'=>'Erechim',
+            'uf'  =>'RS',
+        ]);
     }
 }
 

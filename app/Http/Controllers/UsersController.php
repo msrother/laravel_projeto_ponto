@@ -78,4 +78,18 @@ class UsersController extends Controller
         //     'message' => 'Usuário atualizado com sucesso'
         // ]);
     }
+
+    public function criar_user(Request $request)
+    {        
+    
+        $user = User::create([
+            'nome'      => $request->nome,
+            'email'     => $request->email,
+            'password'  => $request->password, 
+            
+        ]);
+
+        return redirect('/users')->with('success', 'Registro criado com sucesso!');
+      
+    }    
 }
