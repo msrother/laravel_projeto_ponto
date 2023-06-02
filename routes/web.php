@@ -37,6 +37,10 @@ Route::get('/cidades', function () {
     return view('base.cidades');
 })->name('cidades');
 
+Route::get('/pontos', function () {
+    return view('base.pontos');
+})->name('pontos');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -78,6 +82,16 @@ Route::post('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'cri
 Route::put('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'atualizar_cidade'])->name('atualizar_cidade');
 
 Route::delete('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'deletar_cidade'])->name('deletar_cidade');
+
+
+//ponto
+Route::get('/ponto', [App\Http\Controllers\PontosController::class, 'index']);
+
+Route::post('/ponto/{id}',[App\Http\Controllers\PontosController::class, 'criar_ponto'])->name('criar_ponto');
+
+Route::put('/ponto/{id}',[App\Http\Controllers\PontosController::class, 'atualizar_ponto'])->name('atualizar_ponto');
+
+Route::delete('/ponto/{id}',[App\Http\Controllers\PontosController::class, 'deletar_ponto'])->name('deletar_ponto');
 
 
 
