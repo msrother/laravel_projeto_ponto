@@ -37,6 +37,10 @@ Route::get('/cidades', function () {
     return view('base.cidades');
 })->name('cidades');
 
+Route::get('/cargos', function () {
+    return view('base.cargos');
+})->name('cargos');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -83,6 +87,14 @@ Route::delete('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'd
 
 
 //cargos
+Route::get('/cargos', [App\Http\Controllers\CargosController::class, 'index']);
+
+Route::post('/cargos/{id}',[App\Http\Controllers\CargosController::class, 'criar_cargo'])->name('criar_cargo');
+
+Route::put('/cargos/{id}',[App\Http\Controllers\CargosController::class, 'atualizar_cargo'])->name('atualizar_cargo');
+
+Route::delete('/cargos/{id}',[App\Http\Controllers\CargosController::class, 'deletar_cargo'])->name('deletar_cargo');
+
 
 
 
