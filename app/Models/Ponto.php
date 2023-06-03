@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ponto extends Model
 
 {
-    protected $table = 'ponto';
+    protected $table = 'pontos';
 
     protected $fillable = ['data', 'entrada', 'saida'];
     

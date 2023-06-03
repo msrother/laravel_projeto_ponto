@@ -27,7 +27,7 @@ class PontosController extends Controller
     {
         // DESCRIÇÃO: Busca o ID do usuário para realizar a exclusão do registro
         // Quando encontrado, exclui o registro no banco de dados.
-        $pontos = Ponto::find($id);
+        $ponto = Ponto::find($id);
 
         if ($ponto) {
             $ponto->delete();
@@ -82,7 +82,7 @@ class PontosController extends Controller
             //     'uf' => 'required|max:2',
             // ]);
     
-        $pontos = Ponto::create([
+        $ponto = Ponto::create([
             'data' => $request->data,
             'entrada' => $request->entrada,
             'saida' => $request->saida,

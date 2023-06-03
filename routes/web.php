@@ -85,13 +85,13 @@ Route::delete('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'd
 
 
 //ponto
-Route::get('/ponto', [App\Http\Controllers\PontosController::class, 'index']);
+Route::get('/pontos', [App\Http\Controllers\PontosController::class, 'index']);
 
-Route::post('/ponto/{id}',[App\Http\Controllers\PontosController::class, 'criar_ponto'])->name('criar_ponto');
+Route::post('/pontos/{id}',[App\Http\Controllers\PontosController::class, 'criar_ponto'])->name('criar_ponto');
 
-Route::put('/ponto/{id}',[App\Http\Controllers\PontosController::class, 'atualizar_ponto'])->name('atualizar_ponto');
+Route::put('/pontos/{id}',[App\Http\Controllers\PontosController::class, 'atualizar_ponto'])->name('atualizar_ponto');
 
-Route::delete('/ponto/{id}',[App\Http\Controllers\PontosController::class, 'deletar_ponto'])->name('deletar_ponto');
+Route::delete('/pontos/{id}',[App\Http\Controllers\PontosController::class, 'deletar_ponto'])->name('deletar_ponto');
 
 
 

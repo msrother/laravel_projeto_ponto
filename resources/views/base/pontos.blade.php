@@ -66,15 +66,15 @@
                                                     @method('POST')
                                                     <div class="form-group">
                                                         <label for="data">Data:</label>
-                                                        <input placeholder="Insira a data:" type="text" class="form-control" name="data" value="" required autofocus>
+                                                        <input placeholder="Insira a data:" type="date" class="form-control" name="data" value="" required autofocus>
                                                     </div>                                                                                                      
                                                     <div class="form-group">
                                                         <label for="entrada">Entrada:</label>
-                                                        <input placeholder="Insira o horario de entrada:" type="entrada" class="form-control" name="entrada" maxlength="2" value="" required>
+                                                        <input placeholder="Insira o horario de entrada:" type="entrada" class="form-control" name="entrada" maxlength="6" value="" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="saida">Saida:</label>
-                                                        <input placeholder="Insira o horario de saida:" type="saida" class="form-control" name="saida" maxlength="2" value="" required>
+                                                        <input placeholder="Insira o horario de saida:" type="saida" class="form-control" name="saida" maxlength="6" value="" required>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -102,15 +102,15 @@
                                                     @method('PUT')
                                                     <div class="form-group">
                                                         <label for="data">Data:</label>
-                                                        <input type="text" class="form-control" name="nome" value="{{ $ponto->data }}" required autofocus>
+                                                        <input type="date" class="form-control" name="data" value="{{ $ponto->data }}" required autofocus>
                                                     </div>                                                                                                      
                                                     <div class="form-group">
                                                         <label for="entrada">Entrada:</label>
-                                                        <input type="entrada" class="form-control" name="entrada" maxlength="2" value="{{ $ponto->entrada }}" required>
+                                                        <input type="entrada" class="form-control" name="entrada" maxlength="6" value="{{ $ponto->entrada }}" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="saida">Saida:</label>
-                                                        <input type="saida" class="form-control" name="saida" maxlength="2" value="{{ $ponto->saida }}" required>
+                                                        <input type="saida" class="form-control" name="saida" maxlength="6" value="{{ $ponto->saida }}" required>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
