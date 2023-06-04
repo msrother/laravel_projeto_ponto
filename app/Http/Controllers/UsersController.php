@@ -82,14 +82,34 @@ class UsersController extends Controller
     public function criar_user(Request $request)
     {        
     
-        $user = User::create([
-            'nome'      => $request->nome,
-            'email'     => $request->email,
-            'password'  => $request->password, 
-            
-        ]);
+        // $user = User::create([
+        //     'name'      => $request->nome,
+        //     'email'     => $request->email,
+        //     'password'  => $request->password,            
+        // ]);
 
-        return redirect('/users')->with('success', 'Registro criado com sucesso!');
-      
+        $validar = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+             // 'password' => ['required', 'string', 'min:8', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/']
+            'password' => 'required|min:8',
+        ], [
+            'email.email' => 'O e-mail informado é inválido',
+            'email.unique' => 'O e-mail informado já está em uso.',
+            'password.required' => 'Por favor, informe a senha.',
+            'password.min' => 'A senha deve ter pelo menos 8 caracteres.',
+              // 'regex' => 'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.',
+        ]);
+        
+        $validar['password'] = bcrypt($validar['password']);
+        
+        $user = User::create($validar);
+        
+        if ($user) {
+            return redirect('/users')->with('success', 'Registro criado com sucesso!');
+        } else {
+            return redirect('/users')->with('error', 'Erro ao criar o registro.');
+        }
+        
     }    
 }
