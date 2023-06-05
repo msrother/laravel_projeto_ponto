@@ -4,7 +4,6 @@
 @section('content')
 <head>   
     <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
-    <!-- <script src="{{ mix('js/app.js') }}"></script> -->
 </head>
 <div class="container">
     <div class="row justify-content-center">
@@ -19,11 +18,65 @@
                 <div class="card-body">          
                     
                     @if (session('success'))
-                    <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert"">
+                    <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
                         {{ session('success') }}
                         <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">&times;</button>
                     </div>
                     @endif
+                    <!-- Novo Registro -->
+                    <div class="modal fade" id="insertFuncionarioModal" tabindex="-1" role="dialog" aria-labelledby="insertFuncionarioModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="insertFuncionarioModalLabel">Novo Registro</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" action="{{ url('/funcionarios') }}">
+                                        @csrf
+                                        @method('POST')
+                                        <div class="form-group">
+                                            <label for="nome">Nome:</label>
+                                            <input placeholder="Digite o nome" type="text" class="form-control" name="nome" value="" required autofocus>
+                                        </div>                                                                                                      
+                                        <div class="form-group">
+                                            <label for="email">E-mail:</label>
+                                            <input placeholder="Digite o e-mail" type="email" class="form-control" name="email" value="" required>
+                                        </div>                                                                                                        
+                                        <div class="form-group">
+                                            <label for="cpf">CPF:</label>
+                                            <input placeholder="Digite o CPF" type="cpf" class="form-control" name="cpf" maxlength="11" value="" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cidade">Cidade:</label>
+                                            <!-- <input placeholder="Selecione a cidade" type="text" class="form-control" name="cidade" value="" required> -->
+                                            
+                                            <select name="cidade_id" id="cidade_id" class="form-control">
+                                                <!-- @foreach($funcionarios as $funcionario)
+                                                    <option value="{{ $funcionario->id }}">{{ $funcionario->nome }}</option>
+                                                @endforeach -->
+
+                                                @foreach($funcionarios as $funcionario)
+                                                    <option value="{{ $funcionario->converterIdCidade->nome }}">{{ $funcionario->converterIdCidade->nome }}</option>
+                                                @endforeach                                                            
+                                            </select>
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cargo">Cargo:</label>
+                                            <input placeholder="Selecione o cargo" type="text" class="form-control" name="cargo" value="" required>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <button type="submit" id="criar_funcionario" class="btn btn-primary">Salvar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     @if (isset($funcionarios))  {{-- Caso não encontre nenhum funcionário --}}
                         <table class="table table-hover">
                             <thead>
@@ -55,61 +108,6 @@
                                         </button>                                       
                                     </td>
                                 </tr>
-
-                                <!-- Novo Registro -->
-                                <div class="modal fade" id="insertFuncionarioModal" tabindex="-1" role="dialog" aria-labelledby="insertFuncionarioModalLabel{{ $funcionario->id }}" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="insertFuncionarioModalLabel{{ $funcionario->id }}">Novo Registro</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="{{ url('/funcionarios/'.$funcionario->id) }}">
-                                                    @csrf
-                                                    @method('POST')
-                                                    <div class="form-group">
-                                                        <label for="nome">Nome:</label>
-                                                        <input placeholder="Digite o nome" type="text" class="form-control" name="nome" value="" required autofocus>
-                                                    </div>                                                                                                      
-                                                    <div class="form-group">
-                                                        <label for="email">E-mail:</label>
-                                                        <input placeholder="Digite o e-mail" type="email" class="form-control" name="email" value="" required>
-                                                    </div>                                                                                                        
-                                                    <div class="form-group">
-                                                        <label for="cpf">CPF:</label>
-                                                        <input placeholder="Digite o CPF" type="cpf" class="form-control" name="cpf" maxlength="11" value="" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="cidade">Cidade:</label>
-                                                        <!-- <input placeholder="Selecione a cidade" type="text" class="form-control" name="cidade" value="" required> -->
-                                                        
-                                                        <select name="cidade_id" id="cidade_id" class="form-control">
-                                                            <!-- @foreach($funcionarios as $funcionario)
-                                                                <option value="{{ $funcionario->id }}">{{ $funcionario->nome }}</option>
-                                                            @endforeach -->
-
-                                                            @foreach($funcionarios as $funcionario)
-                                                                <option value="{{ $funcionario->converterIdCidade->nome }}">{{ $funcionario->converterIdCidade->nome }}</option>
-                                                            @endforeach                                                            
-                                                        </select>
-                                                        
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="cargo">Cargo:</label>
-                                                        <input placeholder="Selecione o cargo" type="text" class="form-control" name="cargo" value="" required>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                        <button type="submit" id="criar_funcionario" class="btn btn-primary">Salvar</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <!-- Atualizar Registro -->
                                 <div class="modal fade" id="updateFuncionarioModal{{ $funcionario->id }}" tabindex="-1" role="dialog" aria-labelledby="updateFuncionarioModalLabel{{ $funcionario->id }}" aria-hidden="true">
