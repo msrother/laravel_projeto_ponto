@@ -18,11 +18,42 @@
                 <div class="card-body">          
                     
                     @if (session('success'))
-                    <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert"">
+                    <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
                         {{ session('success') }}
                         <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">&times;</button>
                     </div>
                     @endif
+                    <!-- Novo Registro -->
+                    <div class="modal fade" id="insertCidadeModal" tabindex="-1" role="dialog" aria-labelledby="insertCidadeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="insertCidadeModalLabel">Criar Cidade</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" action="{{ url('/cidades') }}">
+                                        @csrf
+                                        @method('POST')
+                                        <div class="form-group">
+                                            <label for="nome">Nome:</label>
+                                            <input placeholder="Digite o nome da cidade" type="text" class="form-control" name="nome" value="" required autofocus>
+                                        </div>                                                                                                      
+                                        <div class="form-group">
+                                            <label for="uf">UF:</label>
+                                            <input type="uf" class="form-control" name="uf" maxlength="2" value="" required>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <button type="submit" id="criar_cidade" class="btn btn-primary">Salvar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     @if (isset($cidades))  {{-- Caso não encontre nenhuma cidade --}}
                         <table class="table table-hover">
                             <thead>
@@ -48,38 +79,6 @@
                                         </button>                                       
                                     </td>
                                 </tr>
-
-                                <!-- Novo Registro -->
-                                <div class="modal fade" id="insertCidadeModal" tabindex="-1" role="dialog" aria-labelledby="insertCidadeModalLabel{{ $cidade->id }}" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="insertCidadeModalLabel{{ $cidade->id }}">Criar Cidade</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="{{ url('/cidades/'.$cidade->id) }}">
-                                                    @csrf
-                                                    @method('POST')
-                                                    <div class="form-group">
-                                                        <label for="nome">Nome:</label>
-                                                        <input placeholder="Digite o nome da cidade" type="text" class="form-control" name="nome" value="" required autofocus>
-                                                    </div>                                                                                                      
-                                                    <div class="form-group">
-                                                        <label for="uf">UF:</label>
-                                                        <input type="uf" class="form-control" name="uf" maxlength="2" value="" required>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                        <button type="submit" id="criar_cidade" class="btn btn-primary">Salvar</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <!-- Atualizar Registro -->
                                 <div class="modal fade" id="updateCidadeModal{{ $cidade->id }}" tabindex="-1" role="dialog" aria-labelledby="updateCidadeModalLabel{{ $cidade->id }}" aria-hidden="true">

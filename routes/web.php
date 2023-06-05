@@ -61,7 +61,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //users administrativos
 Route::get('/users', [App\Http\Controllers\UsersController::class, 'index']);
 
-Route::post('/users/{id}',[App\Http\Controllers\UsersController::class, 'criar_user'])->name('criar_user');
+Route::post('/users',[App\Http\Controllers\UsersController::class, 'criar_user'])->name('criar_user');
 
 Route::put('/users/{id}',[App\Http\Controllers\UsersController::class, 'atualizar_user'])->name('atualizar_user');
 
@@ -71,7 +71,7 @@ Route::delete('/users/{id}',[App\Http\Controllers\UsersController::class, 'delet
 //funcionários
 Route::get('/funcionarios', [App\Http\Controllers\FuncionariosController::class, 'index']);
 
-Route::post('/funcionarios/{id}',[App\Http\Controllers\FuncionariosController::class, 'criar_funcionario'])->name('criar_funcionario');
+Route::post('/funcionarios',[App\Http\Controllers\FuncionariosController::class, 'criar_funcionario'])->name('criar_funcionario');
 
 Route::put('/funcionarios/{id}',[App\Http\Controllers\FuncionariosController::class, 'atualizar_funcionario'])->name('atualizar_funcionario');
 
@@ -81,7 +81,7 @@ Route::delete('/funcionarios/{id}',[App\Http\Controllers\FuncionariosController:
 //cidades
 Route::get('/cidades', [App\Http\Controllers\CidadesController::class, 'index']);
 
-Route::post('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'criar_cidade'])->name('criar_cidade');
+Route::post('/cidades',[App\Http\Controllers\CidadesController::class, 'criar_cidade'])->name('criar_cidade');
 
 Route::put('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'atualizar_cidade'])->name('atualizar_cidade');
 
