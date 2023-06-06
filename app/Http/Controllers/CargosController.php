@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CargosController extends Controller
 {
-    public function index()
+    public function index_cargo()
     {
         // DESCRIÇÃO: Usado para listar todas as colunas da tabela users
 

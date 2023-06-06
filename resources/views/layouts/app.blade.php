@@ -26,8 +26,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand nomeProjeto" href="{{ url('/') }}">
-                    Controle de Ponto de Funcionários
+                <a class="navbar-brand nomeProjeto" href="{{ url('/home') }}">
+                    Home    |   Controle de Ponto 
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -61,33 +61,32 @@
                                 </li>
                             @endif
                         @else
+
+                            @if (Route::has('home'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>                             
+                                </li>
+                            @endif 
+
                         
                             @if (Route::has('noticias'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('noticias') }}">{{ __('Noticias') }}</a>  {{-- Suporta lang --}}                                
+                                    <a class="nav-link" href="{{ route('noticias') }}">{{ __('Notícias') }}</a>  {{-- Suporta lang --}}                                
                                 </li>
                             @endif
-
-                            @if (Route::has('users'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('users') }}">{{ __('Usuários Administrativos') }}</a>                             
-                                </li>
-                            @endif
-
-                            @if (Route::has('funcionarios'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('funcionarios') }}">{{ __('Funcionários') }}</a>                             
-                                </li>
-                            @endif
-
-                            @if (Route::has('cidades'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('cidades') }}">{{ __('Cidades') }}</a>                             
-                                </li>
-                            @endif
-
-                            
+                                                        
                             <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Manutenção
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('index_funcionario') }}">Funcionários</a>                                   
+                                    <a class="dropdown-item" href="{{ route('index_cidade') }}">Cidades</a>
+                                    <a class="dropdown-item" href="{{ route('index_cargo') }}">Cargos</a>
+                                    <a class="dropdown-item" href="{{ route('index_ponto') }}">Pontos</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">    
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
