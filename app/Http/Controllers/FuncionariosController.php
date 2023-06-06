@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FuncionariosController extends Controller
 {
-    public function index()
+    public function index_funcionario()
     {
         // DESCRIÇÃO: Usado para listar todas as colunas da tabela users
 
