@@ -7,7 +7,7 @@
 </head>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-sm-12">
+        <div class="col-sm-8">
             <div class="card">
                 <div class="card-header titulo" style="display: flex; justify-content: space-between; align-items: center;">{{ __('Lista de Cargos') }}                          
                     <button type="button" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#insertCargoModal">
@@ -29,7 +29,8 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Cargo</th>                                 
-                                    <th scope="col">Departamento</th>                                     
+                                    <th scope="col">Departamento</th>  
+                                    <th scope="col">Ações</th>                                     
                                    
                                 </tr>
                             </thead>
@@ -68,8 +69,8 @@
                                                         <input placeholder="Digite o nome do cargo" type="text" class="form-control" name="nome" value="" required autofocus>
                                                     </div>                                                                                                      
                                                     <div class="form-group">
-                                                        <label for="departamento">UDepartamento</label>
-                                                        <input type="departamento" class="form-control" name="departamento" maxlength="2" value="" required>
+                                                        <label for="departamento">Departamento</label>
+                                                        <input placeholder="Digite o departamento" type="departamento" class="form-control" name="departamento" value="" required>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

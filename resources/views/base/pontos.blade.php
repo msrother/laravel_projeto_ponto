@@ -30,7 +30,8 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Data</th>                                 
                                     <th scope="col">Entrada</th>                                     
-                                    <th scope="col">Saida</th>                                    
+                                    <th scope="col">Saida</th>
+                                    <th scope="col">Ações</th>                                    
                                 </tr>
                             </thead>
                             <tbody>                            
@@ -70,11 +71,11 @@
                                                     </div>                                                                                                      
                                                     <div class="form-group">
                                                         <label for="entrada">Entrada:</label>
-                                                        <input placeholder="Insira o horario de entrada:" type="entrada" class="form-control" name="entrada" maxlength="6" value="" required>
+                                                        <input placeholder="Insira o horario de entrada:" type="time" class="form-control" name="entrada" maxlength="6" value="" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="saida">Saida:</label>
-                                                        <input placeholder="Insira o horario de saida:" type="saida" class="form-control" name="saida" maxlength="6" value="" required>
+                                                        <input placeholder="Insira o horario de saida:" type="time" class="form-control" name="saida" maxlength="6" value="" required>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

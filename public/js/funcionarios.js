@@ -14,7 +14,11 @@ function deleteFuncionario(id, nome) {
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Sim, excluir',
-        cancelButtonText: 'Cancelar'
+        cancelButtonText: 'Cancelar',    
+        customClass: {
+            confirmButton: 'btn btn-danger btn-sm mr-2', // Adiciona margem à direita
+            cancelButton: 'btn btn-secondary btn-sm' // Botão de cancelar sem margem adicional
+          }
     }).then((result) => {
         if (result.isConfirmed) {
             axios.delete(`/funcionarios/${id}`)
