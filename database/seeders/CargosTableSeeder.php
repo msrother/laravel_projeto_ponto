@@ -15,9 +15,16 @@ class CargosTableSeeder extends Seeder
     {
         $cargo->create([
             'nome'=>'Auxiliar',
-            'departamento'  =>'Limpeza',
+            'departamento'  =>'Serviços Gerais',
         ]);
-
+        $cargo->create([
+            'nome'=>'Assistente',
+            'departamento'  =>'Administrativo',
+        ]);
+        $cargo->create([
+            'nome'=>'Montador',
+            'departamento'  =>'Produção',
+        ]);
     }
 }
 
