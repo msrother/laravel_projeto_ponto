@@ -88,18 +88,6 @@ Route::put('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'atua
 Route::delete('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'deletar_cidade'])->name('deletar_cidade');
 
 
-//ponto
-Route::get('/pontos', [App\Http\Controllers\PontosController::class, 'index_ponto'])->name('index_ponto');;
-
-Route::post('/pontos/{id}',[App\Http\Controllers\PontosController::class, 'criar_ponto'])->name('criar_ponto');
-
-Route::put('/pontos/{id}',[App\Http\Controllers\PontosController::class, 'atualizar_ponto'])->name('atualizar_ponto');
-
-Route::delete('/pontos/{id}',[App\Http\Controllers\PontosController::class, 'deletar_ponto'])->name('deletar_ponto');
-
-
-
-
 //cargos
 Route::get('/cargos', [App\Http\Controllers\CargosController::class, 'index_cargo'])->name('index_cargo');
 
@@ -110,7 +98,13 @@ Route::put('/cargos/{id}',[App\Http\Controllers\CargosController::class, 'atuali
 Route::delete('/cargos/{id}',[App\Http\Controllers\CargosController::class, 'deletar_cargo'])->name('deletar_cargo');
 
 
-
-
 //pontos
+Route::get('/pontos', [App\Http\Controllers\PontosController::class, 'index_ponto'])->name('index_ponto');;
+
+Route::post('/pontos/{id}',[App\Http\Controllers\PontosController::class, 'criar_ponto'])->name('criar_ponto');
+
+Route::put('/pontos/{id}',[App\Http\Controllers\PontosController::class, 'atualizar_ponto'])->name('atualizar_ponto');
+
+Route::delete('/pontos/{id}',[App\Http\Controllers\PontosController::class, 'deletar_ponto'])->name('deletar_ponto');
+
 

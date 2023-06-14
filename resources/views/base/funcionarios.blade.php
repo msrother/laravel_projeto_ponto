@@ -65,8 +65,17 @@
                                             
                                         </div>
                                         <div class="form-group">
-                                            <label for="cargo">Cargo:</label>
-                                            <input placeholder="Selecione o cargo" type="text" class="form-control" name="cargo" value="" required>
+                                            <label for="cargo">Cargo:</label>                                           
+                                            <!-- <input placeholder="Selecione o cargo" type="text" class="form-control" name="cargo" value="" required> -->
+                                            <select name="cargo_id" id="cargo_id" class="form-control">
+                                                <!-- @foreach($funcionarios as $funcionario)
+                                                    <option value="{{ $funcionario->id }}">{{ $funcionario->nome }}</option>
+                                                @endforeach -->
+
+                                                @foreach($funcionarios as $funcionario)
+                                                    <option value="{{ $funcionario->converterIdCargo->nome }}">{{ $funcionario->converterIdCargo->nome }}</option>
+                                                @endforeach                                                            
+                                            </select>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -98,7 +107,7 @@
                                     <td>{{ $funcionario->email }}</td>                                                                      
                                     <td>{{ $funcionario->cpf }}</td>                                                                     
                                     <td>{{ $funcionario->converterIdCidade->nome }}</td>                                                                     
-                                    <td>{{ $funcionario->cargo }}</td>                                                                     
+                                    <td>{{ $funcionario->converterIdCargo->nome }}</td>                                                                     
                                     <td>                                               
                                         <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#updateFuncionarioModal{{ $funcionario->id }}">
                                             Editar
@@ -141,7 +150,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="cargo">Cargo:</label>
-                                                        <input type="text" class="form-control" name="cargo" value="{{ $funcionario->cargo }}" required>
+                                                        <input type="text" class="form-control" name="cargo" value="{{ $funcionario->cargo_id }}" required>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
