@@ -4,7 +4,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+   
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,10 +22,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     {{-- Vite quais arquivos devem ser compilados e preparados para serem entregues ao navegador como parte do processo de build de um aplicativo web. --}}
 </head>
-<body>
-    <script src="{{ mix('js/app.js') }}"></script>
-    
-    
+<body>          
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">

@@ -8,17 +8,15 @@ class Ponto extends Model
 
 {
     protected $table = 'pontos';
-
     protected $fillable = ['data', 'entrada', 'saida'];
-    
-    
+        
 
     public function updatePonto($id, $data, $entrada, $saida)
     {
         $ponto = ponto::find($id);
-        $ponto->data   = $data;               
+        $ponto->data        = $data;               
         $ponto->entrada     = $entrada; 
-        $ponto->saida     = $saida;      
+        $ponto->saida       = $saida;      
         $ponto->save();
     }
 
