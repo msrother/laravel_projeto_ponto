@@ -7,7 +7,7 @@
 </head>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-sm-12">
+        <div class="col-sm-8">
             <div class="card">
                 <div class="card-header titulo" style="display: flex; justify-content: space-between; align-items: center;">{{ __('Lista de Cidades') }}                          
                     <button type="button" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#insertCidadeModal">
@@ -43,7 +43,7 @@
                                         </div>                                                                                                      
                                         <div class="form-group">
                                             <label for="uf">UF:</label>
-                                            <input type="uf" class="form-control" name="uf" maxlength="2" value="" required>
+                                            <input placeholder="Digite a UF"type="uf" class="form-control" name="uf" maxlength="2" value="" required>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -59,8 +59,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Nome</th>                                 
-                                    <th scope="col">UF</th>                                     
+                                    <th scope="col" class="col-sm-6">Nome</th>                                 
+                                    <th scope="col" class="col-sm-3">UF</th>                                     
                                     <th scope="col">Ações</th>                                    
                                 </tr>
                             </thead>

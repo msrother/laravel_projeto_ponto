@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
 
 class Funcionario extends Model
@@ -36,6 +35,10 @@ class Funcionario extends Model
         //após inserir isto, somente está funcionando o update do último registro cadastrado
     }
 
+    public function exibirCargos()
+    {
+        $cargosUnicos = $funcionarios->unique('converterIdCargo.nome')->sortBy('converterIdCargo.nome');
+    }
 
 }
 ?>

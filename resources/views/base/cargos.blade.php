@@ -23,15 +23,45 @@
                         <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">&times;</button>
                     </div>
                     @endif
+                    <!-- Novo Registro -->
+                    <div class="modal fade" id="insertCargoModal" tabindex="-1" role="dialog" aria-labelledby="insertCargoModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="insertCargoModalLabel">Criar Cargo</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" action="{{ url('/cargos') }}">
+                                        @csrf
+                                        @method('POST')
+                                        <div class="form-group">
+                                            <label for="nome">Cargo:</label>
+                                            <input placeholder="Digite o nome do cargo" type="text" class="form-control" name="nome" value="" required autofocus>
+                                        </div>                                                                                                      
+                                        <div class="form-group">
+                                            <label for="departamento">Departamento</label>
+                                            <input placeholder="Digite o departamento" type="departamento" class="form-control" name="departamento" value="" required>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <button type="submit" id="criar_cargo" class="btn btn-primary">Salvar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     @if (isset($cargos))  {{-- Caso não encontre nenhum cargo --}}
                         <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Cargo</th>                                 
-                                    <th scope="col">Departamento</th>  
-                                    <th scope="col">Ações</th>                                     
-                                   
+                                    <th scope="col" class="col-sm-4">Cargo</th>                                 
+                                    <th scope="col" class="col-sm-5">Departamento</th>  
+                                    <th scope="col">Ações</th>                                   
                                 </tr>
                             </thead>
                             <tbody>                            
@@ -49,39 +79,6 @@
                                         </button>                                       
                                     </td>
                                 </tr>
-
-                                <!-- Novo Registro -->
-                                <div class="modal fade" id="insertCargoModal" tabindex="-1" role="dialog" aria-labelledby="insertCargoModalLabel{{ $cargo->id }}" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="insertCargoModalLabel{{ $cargo->id }}">Criar Cargo</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="{{ url('/cargos/'.$cargo->id) }}">
-                                                    @csrf
-                                                    @method('POST')
-                                                    <div class="form-group">
-                                                        <label for="nome">Cargo:</label>
-                                                        <input placeholder="Digite o nome do cargo" type="text" class="form-control" name="nome" value="" required autofocus>
-                                                    </div>                                                                                                      
-                                                    <div class="form-group">
-                                                        <label for="departamento">Departamento</label>
-                                                        <input placeholder="Digite o departamento" type="departamento" class="form-control" name="departamento" value="" required>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                        <button type="submit" id="criar_cargo" class="btn btn-primary">Salvar</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <!-- Atualizar Registro -->
                                 <div class="modal fade" id="updateCargoModal{{ $cargo->id }}" tabindex="-1" role="dialog" aria-labelledby="updateCargoModalLabel{{ $cargo->id }}" aria-hidden="true">
                                     <div class="modal-dialog" role="document">

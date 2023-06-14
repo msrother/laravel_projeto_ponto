@@ -53,28 +53,26 @@
                                             <label for="cidade">Cidade:</label>
                                             <!-- <input placeholder="Selecione a cidade" type="text" class="form-control" name="cidade" value="" required> -->
                                             
-                                            <select name="cidade_id" id="cidade_id" class="form-control">
-                                                <!-- @foreach($funcionarios as $funcionario)
-                                                    <option value="{{ $funcionario->id }}">{{ $funcionario->nome }}</option>
-                                                @endforeach -->
 
-                                                @foreach($funcionarios as $funcionario)
-                                                    <option value="{{ $funcionario->converterIdCidade->nome }}">{{ $funcionario->converterIdCidade->nome }}</option>
-                                                @endforeach                                                            
-                                            </select>
                                             
                                         </div>
                                         <div class="form-group">
                                             <label for="cargo">Cargo:</label>                                           
                                             <!-- <input placeholder="Selecione o cargo" type="text" class="form-control" name="cargo" value="" required> -->
                                             <select name="cargo_id" id="cargo_id" class="form-control">
+                                                <option value="" disabled selected>Selecione um cargo</option>
                                                 <!-- @foreach($funcionarios as $funcionario)
                                                     <option value="{{ $funcionario->id }}">{{ $funcionario->nome }}</option>
-                                                @endforeach -->
+                                                @endforeach -->                                            
+                                                
+                                                <!-- @php    
+                                                    $cargosUnicos = $funcionarios->unique('converterIdCargo.nome')->sortBy('converterIdCargo.nome');
+                                                @endphp -->
 
-                                                @foreach($funcionarios as $funcionario)
+                                                @foreach($cargosUnicos as $funcionario)
                                                     <option value="{{ $funcionario->converterIdCargo->nome }}">{{ $funcionario->converterIdCargo->nome }}</option>
-                                                @endforeach                                                            
+                                                @endforeach
+                                                
                                             </select>
                                         </div>
                                         <div class="modal-footer">
@@ -91,7 +89,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Nome</th>                                 
+                                    <th scope="col" class="col-sm-3">Nome</th>                                 
                                     <th scope="col">E-mail</th>                                     
                                     <th scope="col">CPF</th>                                     
                                     <th scope="col">Cidade</th>

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Funcionario;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
@@ -48,5 +47,5 @@ class FuncionariosController extends Controller
 
         return redirect('/funcionarios')->with('success', 'Registro criado com sucesso!');
       
-    }    
+    }
 }
