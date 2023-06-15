@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Funcionario;
+use App\Models\Cidade;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 
@@ -41,8 +42,8 @@ class FuncionariosController extends Controller
             'nome'  => $request->nome,
             'email' => $request->email,
             'cpf'   => $request->cpf,
-            'cidade'=> $request->cidade,
-            'cargo' => $request->cargo,
+            'cidade_id'=> $request->cidade_id,
+            'cargo_id' => $request->cargo_id,
         ]);
 
         return redirect('/funcionarios')->with('success', 'Registro criado com sucesso!');

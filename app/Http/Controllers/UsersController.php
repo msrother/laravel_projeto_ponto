@@ -48,7 +48,7 @@ class UsersController extends Controller
 
         $user = new user;
         $user->updateUser($id, $request->name, $request->email);
-        return redirect('/users');
+        return redirect('/users')->with('success', 'Registro atualizado com sucesso!');
         
         // SEM MODEL
 

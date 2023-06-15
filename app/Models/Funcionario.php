@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Cidade;
 use Illuminate\Database\Eloquent\Model;
 
 class Funcionario extends Model
@@ -34,6 +35,12 @@ class Funcionario extends Model
 
         //após inserir isto, somente está funcionando o update do último registro cadastrado
     }
+
+    public function exibirCidades()
+    {            
+        $selecionarCidade = $funcionarios->unique('converterIdCidade.nome')->sortBy('converterIdCidade.nome');
+      
+    }        
 
     public function exibirCargos()
     {

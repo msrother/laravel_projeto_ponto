@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Controller\CargosController;
+use App\Controller\CidadesController;
+use App\Controller\FuncionariosController;
+use App\Controller\PontosController;
+use App\Controller\UsersController;
 
 /*
 |--------------------------------------------------------------------------

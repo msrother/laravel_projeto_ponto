@@ -40,19 +40,40 @@
                                         <div class="form-group">
                                             <label for="nome">Nome:</label>
                                             <input placeholder="Digite o nome" type="text" class="form-control" name="nome" value="" required autofocus>
-                                        </div>                                                                                                      
-                                        <div class="form-group">
-                                            <label for="email">E-mail:</label>
-                                            <input placeholder="Digite o e-mail" type="email" class="form-control" name="email" value="" required>
-                                        </div>                                                                                                        
-                                        <div class="form-group">
-                                            <label for="cpf">CPF:</label>
-                                            <input placeholder="Digite o CPF" type="cpf" class="form-control" name="cpf" maxlength="11" value="" required>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-8">                                                                                                          
+                                                <div class="form-group">
+                                                    <label for="email">E-mail:</label>
+                                                    <input placeholder="Digite o e-mail" type="email" class="form-control" name="email" value="" required>
+                                                </div>
+                                            </div>                                                                                                        
+                                            <div class="col-sm-4">                                                                                                          
+                                                <div class="form-group">
+                                                   <label for="cpf">CPF:</label>
+                                                    <input placeholder="Digite o CPF" type="cpf" class="form-control" name="cpf" maxlength="11" value="" required>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="cidade">Cidade:</label>
                                             <!-- <input placeholder="Selecione a cidade" type="text" class="form-control" name="cidade" value="" required> -->
-                                            
+                                            <select name="cidade_id" id="cidade_id" class="form-control">
+                                                <option value="" disabled selected>Selecione a cidade</option>
+                                                                                 
+                                                
+                                                <!-- @php    
+                                                    $selecionarCidade = $funcionarios->unique('converterIdCidade.nome')->sortBy('converterIdCidade.nome');
+                                                @endphp -->
+
+                                                @foreach($selecionarCidade as $funcionario)
+                                                    <option value="{{ $funcionario->converterIdCidade->nome }}">{{ $funcionario->converterIdCidade->nome }}</option>
+                                                @endforeach
+                                                
+                                            </select>
+
+
+
 
                                             
                                         </div>
@@ -60,10 +81,8 @@
                                             <label for="cargo">Cargo:</label>                                           
                                             <!-- <input placeholder="Selecione o cargo" type="text" class="form-control" name="cargo" value="" required> -->
                                             <select name="cargo_id" id="cargo_id" class="form-control">
-                                                <option value="" disabled selected>Selecione um cargo</option>
-                                                <!-- @foreach($funcionarios as $funcionario)
-                                                    <option value="{{ $funcionario->id }}">{{ $funcionario->nome }}</option>
-                                                @endforeach -->                                            
+                                                <option value="" disabled selected>Selecione o cargo</option>
+                                                                                        
                                                 
                                                 <!-- @php    
                                                     $cargosUnicos = $funcionarios->unique('converterIdCargo.nome')->sortBy('converterIdCargo.nome');
@@ -134,13 +153,19 @@
                                                         <label for="nome">Nome:</label>
                                                         <input type="text" class="form-control" name="nome" value="{{ $funcionario->nome }}" required autofocus>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="email">E-mail:</label>
-                                                        <input type="email" class="form-control" name="email" value="{{ $funcionario->email }}" required>
-                                                    </div>                                                                                                        
-                                                    <div class="form-group">
-                                                        <label for="cpf">CPF:</label>
-                                                        <input type="cpf" class="form-control" name="cpf" maxlength="11" value="{{ $funcionario->cpf }}" required>
+                                                    <div class="row">
+                                                        <div class="col-sm-8">  
+                                                            <div class="form-group">
+                                                                <label for="email">E-mail:</label>
+                                                                <input type="email" class="form-control" name="email" value="{{ $funcionario->email }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">                                                                                                        
+                                                            <div class="form-group">
+                                                                <label for="cpf">CPF:</label>
+                                                                <input type="cpf" class="form-control" name="cpf" maxlength="11" value="{{ $funcionario->cpf }}" required>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="cidade">Cidade:</label>

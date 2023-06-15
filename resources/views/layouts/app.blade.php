@@ -45,7 +45,7 @@
                         @guest <!-- Diretiva do blade que permite mostrar apenas os conteudos para usuarios não autenticados -->                                                    
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Entrar') }}</a>
                                 </li>
                             @endif
 
@@ -61,14 +61,7 @@
                                 </li>
                             @endif
                         @else
-
-                            @if (Route::has('home'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>                             
-                                </li>
-                            @endif 
-
-                        
+                                                 
                             @if (Route::has('noticias'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('noticias') }}">{{ __('Notícias') }}</a>  {{-- Suporta lang --}}                                
@@ -79,10 +72,10 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Manutenção
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('index_funcionario') }}">Funcionários</a>                                   
-                                    <a class="dropdown-item" href="{{ route('index_cidade') }}">Cidades</a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">                                                                     
                                     <a class="dropdown-item" href="{{ route('index_cargo') }}">Cargos</a>
+                                    <a class="dropdown-item" href="{{ route('index_cidade') }}">Cidades</a>                                    
+                                    <a class="dropdown-item" href="{{ route('index_funcionario') }}">Funcionários</a>
                                     <a class="dropdown-item" href="{{ route('index_ponto') }}">Pontos</a>
                                 </div>
                             </li>

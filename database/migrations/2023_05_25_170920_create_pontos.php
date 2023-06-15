@@ -13,16 +13,13 @@ return new class extends Migration
     {
         Schema::create('pontos', function (Blueprint $table) {
             $table->id();
-           // $table->foreign()->references('id')->on('funcionarios');
+            $table->unsignedBigInteger('funcionario_id');
             $table->date('data');
             $table->time('entrada');
             $table->time('saida');
-            $table->unsignedBigInteger('funcionarios_id');
-
             $table->timestamps();
             
-            $table->foreign('funcionarios_id')->references('id')->on('funcionarios');
-
+            $table->foreign('funcionario_id')->references('id')->on('funcionarios');            
         });
     }
 
