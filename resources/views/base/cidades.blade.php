@@ -11,7 +11,7 @@
         <div class="col-sm-8">
             <div class="card">
                 <div class="card-header titulo" style="display: flex; justify-content: space-between; align-items: center;">{{ __('Lista de Cidades') }}                          
-                    <button type="button" class="btn btn-md btn-dark" data-toggle="modal" data-target="#insertCidadeModal">
+                    <button type="button" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#insertCidadeModal">
                         <i class="bi bi-plus-circle"></i>                                                   
                     </button>                
                 </div>
@@ -78,7 +78,6 @@
                                         </button>                                       
                                     </td>
                                 </tr>
-
                                 <!-- Atualizar Registro -->
                                 <div class="modal fade" id="updateCidadeModal{{ $cidade->id }}" tabindex="-1" role="dialog" aria-labelledby="updateCidadeModalLabel{{ $cidade->id }}" aria-hidden="true">
                                     <div class="modal-dialog" role="document">

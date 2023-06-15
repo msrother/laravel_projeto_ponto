@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Funcionario;
 use App\Models\Cidade;
+use App\Models\Cargo;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +14,10 @@ class FuncionariosController extends Controller
         $itensPaginas = 5; // número de itens por página
         $funcionarios = Funcionario::paginate($itensPaginas);
 
-        return view('base.funcionarios', ['funcionarios' => $funcionarios]);
+        $cidades = Cidade::all();
+        $cargos  = Cargo::all(); 
+
+        return view('base.funcionarios', ['funcionarios' => $funcionarios, 'cidades' => $cidades, 'cargos' => $cargos]);
     }
 
     public function deletar_funcionario($id)
@@ -39,14 +43,14 @@ class FuncionariosController extends Controller
     public function criar_funcionario(Request $request)
     {    
         $funcionario = Funcionario::create([
-            'nome'  => $request->nome,
-            'email' => $request->email,
-            'cpf'   => $request->cpf,
-            'cidade_id'=> $request->cidade_id,
-            'cargo_id' => $request->cargo_id,
+            'nome'      => $request->nome,
+            'email'     => $request->email,
+            'cpf'       => $request->cpf,
+            'cidade_id' => $request->cidade_id,
+            'cargo_id'  => $request->cargo_id,
         ]);
 
-        return redirect('/funcionarios')->with('success', 'Registro criado com sucesso!');
+        return redirect('/funcionarios')->with('success', 'Registro criado com sucesso!');        
       
     }
 }

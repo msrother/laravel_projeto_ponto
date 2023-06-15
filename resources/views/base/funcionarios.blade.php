@@ -15,9 +15,7 @@
                         <i class="bi bi-plus-circle"></i>   
                     </button>                       
                 </div>
-
-                <div class="card-body">          
-                    
+                <div class="card-body">                    
                     @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
                         {{ session('success') }}
@@ -55,44 +53,23 @@
                                                     <input placeholder="Digite o CPF" type="cpf" class="form-control" name="cpf" maxlength="11" value="" required>
                                                 </div>
                                             </div>
+                                        </div>      
+                                        <div class="form-group">
+                                            <label for="cidade">Cidade:</label>                                                                                        
+                                            <select name="cidade_id" id="cidade_id" class="form-select" required>
+                                                <option value="" disabled selected>Selecione uma cidade</option>
+                                                @foreach($cidades as $cidade)
+                                                    <option value="{{ $cidade->id }}">{{ $cidade->nome }}</option>
+                                                @endforeach                                                
+                                            </select>                                            
                                         </div>
                                         <div class="form-group">
-                                            <label for="cidade">Cidade:</label>
-                                            <!-- <input placeholder="Selecione a cidade" type="text" class="form-control" name="cidade" value="" required> -->
-                                            <select name="cidade_id" id="cidade_id" class="form-control">
-                                                <option value="" disabled selected>Selecione a cidade</option>
-                                                                                 
-                                                
-                                                <!-- @php    
-                                                    $selecionarCidade = $funcionarios->unique('converterIdCidade.nome')->sortBy('converterIdCidade.nome');
-                                                @endphp -->
-
-                                                @foreach($selecionarCidade as $funcionario)
-                                                    <option value="{{ $funcionario->converterIdCidade->nome }}">{{ $funcionario->converterIdCidade->nome }}</option>
-                                                @endforeach
-                                                
-                                            </select>
-
-
-
-
-                                            
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="cargo">Cargo:</label>                                           
-                                            <!-- <input placeholder="Selecione o cargo" type="text" class="form-control" name="cargo" value="" required> -->
-                                            <select name="cargo_id" id="cargo_id" class="form-control">
+                                            <label for="cargo">Cargo:</label>                                                                                       
+                                            <select name="cargo_id" id="cargo_id" class="form-select" required>
                                                 <option value="" disabled selected>Selecione o cargo</option>
-                                                                                        
-                                                
-                                                <!-- @php    
-                                                    $cargosUnicos = $funcionarios->unique('converterIdCargo.nome')->sortBy('converterIdCargo.nome');
-                                                @endphp -->
-
-                                                @foreach($cargosUnicos as $funcionario)
-                                                    <option value="{{ $funcionario->converterIdCargo->nome }}">{{ $funcionario->converterIdCargo->nome }}</option>
-                                                @endforeach
-                                                
+                                                @foreach($cargos as $cargo)
+                                                    <option value="{{ $cargo->id }}">{{ $cargo->nome }}</option>
+                                                @endforeach                                                                                 
                                             </select>
                                         </div>
                                         <div class="modal-footer">
@@ -135,7 +112,6 @@
                                         </button>                                       
                                     </td>
                                 </tr>
-
                                 <!-- Atualizar Registro -->
                                 <div class="modal fade" id="updateFuncionarioModal{{ $funcionario->id }}" tabindex="-1" role="dialog" aria-labelledby="updateFuncionarioModalLabel{{ $funcionario->id }}" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -170,11 +146,25 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="cidade">Cidade:</label>
-                                                        <input type="text" class="form-control" name="cidade" value="{{ $funcionario->cidade_id }}" required>
-                                                    </div>
+                                                        <select name="cidade_id" id="cidade_id" class="form-select" required>
+                                                            <option value="" disabled>Selecione uma cidade</option>
+                                                            @foreach($cidades as $cidade)
+                                                                <option value="{{ $cidade->id }}" {{ $funcionario->cidade_id == $cidade->id ? 'selected' : '' }}>
+                                                                    {{ $cidade->nome }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>                                                                                               
                                                     <div class="form-group">
                                                         <label for="cargo">Cargo:</label>
-                                                        <input type="text" class="form-control" name="cargo" value="{{ $funcionario->cargo_id }}" required>
+                                                        <select name="cargo_id" id="cargo_id" class="form-select" required>
+                                                            <option value="" disabled>Selecione o cargo</option>
+                                                            @foreach($cargos as $cargo)
+                                                                <option value="{{ $cargo->id }}" {{ $funcionario->cargo_id == $cargo->id ? 'selected' : '' }}>
+                                                                    {{ $cargo->nome }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

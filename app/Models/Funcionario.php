@@ -36,16 +36,7 @@ class Funcionario extends Model
         //após inserir isto, somente está funcionando o update do último registro cadastrado
     }
 
-    public function exibirCidades()
-    {            
-        $selecionarCidade = $funcionarios->unique('converterIdCidade.nome')->sortBy('converterIdCidade.nome');
-      
-    }        
-
-    public function exibirCargos()
-    {
-        $cargosUnicos = $funcionarios->unique('converterIdCargo.nome')->sortBy('converterIdCargo.nome');
-    }
-
+  
+   
 }
 ?>
