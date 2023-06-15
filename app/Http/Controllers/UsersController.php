@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UsersController extends Controller
 {
-    public function index()
+    public function index_user()
     {
         // DESCRIÇÃO: Usado para listar todas as colunas da tabela users
 

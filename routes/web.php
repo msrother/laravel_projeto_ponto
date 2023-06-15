@@ -64,7 +64,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //users administrativos
-Route::get('/users', [App\Http\Controllers\UsersController::class, 'index']);
+Route::get('/users', [App\Http\Controllers\UsersController::class, 'index_user'])->name('index_user');;
 
 Route::post('/users',[App\Http\Controllers\UsersController::class, 'criar_user'])->name('criar_user');
 

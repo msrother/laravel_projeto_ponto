@@ -77,6 +77,8 @@
                                     <a class="dropdown-item" href="{{ route('index_cidade') }}">Cidades</a>                                    
                                     <a class="dropdown-item" href="{{ route('index_funcionario') }}">Funcionários</a>
                                     <a class="dropdown-item" href="{{ route('index_ponto') }}">Pontos</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ route('index_user') }}">Usuários administrativos</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">    
