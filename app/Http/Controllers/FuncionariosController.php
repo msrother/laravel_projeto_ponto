@@ -35,7 +35,7 @@ class FuncionariosController extends Controller
     public function atualizar_funcionario($id, Request $request)
     {
         $funcionario = new funcionario;
-        $funcionario->updateFuncionario($id, $request->nome, $request->email, $request->cpf, $request->cidade, $request->cargo);
+        $funcionario->updateFuncionario($id, $request->nome, $request->email, $request->cpf, $request->cidade_id, $request->cargo_id);
         return redirect('/funcionarios')->with('success', 'Registro atualizado com sucesso!');;
                
     }
