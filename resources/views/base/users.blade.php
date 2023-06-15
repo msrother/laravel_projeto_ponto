@@ -3,6 +3,7 @@
 @section('content')
 <head>
     <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <div class="container">
     <div class="row justify-content-center">
@@ -10,7 +11,7 @@
             <div class="card">                
                 <div class="card-header titulo" style="display: flex; justify-content: space-between; align-items: center;">{{ __('Lista de Usuários Administrativos') }}                          
                     <button type="button" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#insertUserModal">
-                        <i aria-hidden="true" class="fa fa-fw fa-user-plus"></i> Novo Registro    
+                        <i class="bi bi-plus-circle"></i> 
                     </button>                       
                 </div>
                 <div class="card-body">
@@ -70,8 +71,9 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Nome</th>                                 
-                                    <th scope="col">E-mail</th>                    
+                                    <th scope="col" class="col-sm-5">Nome</th>                                 
+                                    <th scope="col" class="col-sm-4">E-mail</th>
+                                    <th scope="col">Ações</th>                     
                                 </tr>
                             </thead>
                             <tbody>                            
@@ -81,13 +83,14 @@
                                     <td>{{ $user->name }}</td>                                 
                                     <td>{{ $user->email }}</td>                                  
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#updateUserModal">
-                                            Editar
+                                        <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#updateUserModal{{ $user->id }}">
+                                            <i class="bi bi-pencil-fill"></i>
                                         </button>
-                                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteUser({{ $user->id }}, '{{ $user->name }}')">Excluir</button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteUser({{ $user->id }}, '{{ $user->name }}')">
+                                            <i class="bi bi-trash-fill"></i>
+                                        </button>
                                     </td>
-                                </tr>
-                                
+                                </tr>                                
                                 <!-- Atualizar Registro -->
                                 <div class="modal fade" id="updateUserModal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="updateUserModalLabel{{ $user->id }}" aria-hidden="true">
                                     <div class="modal-dialog" role="document">

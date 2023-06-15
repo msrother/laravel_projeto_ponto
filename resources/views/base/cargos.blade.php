@@ -3,7 +3,8 @@
 
 @section('content')
 <head>   
-    <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">  
+    <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">  
 </head>
 <div class="container">
     <div class="row justify-content-center">
@@ -11,7 +12,7 @@
             <div class="card">
                 <div class="card-header titulo" style="display: flex; justify-content: space-between; align-items: center;">{{ __('Lista de Cargos') }}                          
                     <button type="button" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#insertCargoModal">
-                        <i aria-hidden="true" class="fa fa-fw fa-user-plus"></i> Novo Registro    
+                        <i class="bi bi-plus-circle"></i> 
                     </button>                       
                 </div>
 
@@ -72,10 +73,10 @@
                                     <td>{{ $cargo->departamento }}</td>                                                                      
                                     <td>                                               
                                         <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#updateCargoModal{{ $cargo->id }}">
-                                            Editar
+                                            <i class="bi bi-pencil-fill"></i>
                                         </button>
                                         <button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteCargo({{ $cargo->id }}, '{{ $cargo->nome }}')">
-                                            Excluir
+                                            <i class="bi bi-trash-fill"></i>
                                         </button>                                       
                                     </td>
                                 </tr>

@@ -3,20 +3,19 @@
 
 @section('content')
 <head>   
-    <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">  
+    <link rel="stylesheet" href="{{ asset('css/estilo.css') }}"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">   
 </head>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-sm-8">
             <div class="card">
                 <div class="card-header titulo" style="display: flex; justify-content: space-between; align-items: center;">{{ __('Lista de Cidades') }}                          
-                    <button type="button" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#insertCidadeModal">
-                        <i aria-hidden="true" class="fa fa-fw fa-user-plus"></i> Novo Registro    
-                    </button>                       
+                    <button type="button" class="btn btn-md btn-dark" data-toggle="modal" data-target="#insertCidadeModal">
+                        <i class="bi bi-plus-circle"></i>                                                   
+                    </button>                
                 </div>
-
-                <div class="card-body">          
-                    
+                <div class="card-body">                    
                     @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
                         {{ session('success') }}
@@ -72,10 +71,10 @@
                                     <td>{{ $cidade->uf }}</td>                                                                      
                                     <td>                                               
                                         <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#updateCidadeModal{{ $cidade->id }}">
-                                            Editar
+                                            <i class="bi bi-pencil-fill"></i> 
                                         </button>
                                         <button type="button" class="btn btn-sm btn-outline-danger" onclick="deleteCidade({{ $cidade->id }}, '{{ $cidade->nome }}')">
-                                            Excluir
+                                            <i class="bi bi-trash-fill"></i>
                                         </button>                                       
                                     </td>
                                 </tr>
