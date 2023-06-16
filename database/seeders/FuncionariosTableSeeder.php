@@ -18,7 +18,7 @@ class FuncionariosTableSeeder extends Seeder
             'email'  =>'amd@ij.com',
             'cpf'    =>'01298765319',
             'cidade_id' =>'1',
-         //   'cargo_id'  =>'Assistente administrativo',
+            'cargo_id'  =>'2',
         ]);
         
         $funcionario->create([
@@ -26,7 +26,7 @@ class FuncionariosTableSeeder extends Seeder
             'email'  =>'clodo@ewrs.com.br',
             'cpf'    =>'73698765835',
             'cidade_id' =>'3',
-         //   'cargo'  =>'Auxiliar de serviços gerais',
+            'cargo_id'  =>'1',
         ]);
 
         $funcionario->create([
@@ -34,7 +34,7 @@ class FuncionariosTableSeeder extends Seeder
             'email'  =>'creu@ewrs.com.br',
             'cpf'    =>'35698675300',
             'cidade_id' =>'2',
-         //   'cargo'  =>'Assistente de marketing',
+            'cargo_id'  =>'3',
         ]);
 
         $funcionario->create([
@@ -42,7 +42,7 @@ class FuncionariosTableSeeder extends Seeder
             'email'  =>'erk@ewrs.com.br',
             'cpf'    =>'45696677300',
             'cidade_id' =>'1',
-         //   'cargo'  =>'Supervisor',
+            'cargo_id'  =>'2',
         ]);
 
         $funcionario->create([
@@ -50,7 +50,7 @@ class FuncionariosTableSeeder extends Seeder
             'email'  =>'madline@ewrs.com.br',
             'cpf'    =>'22694475300',
             'cidade_id' =>'3',
-         //   'cargo'  =>'Diretora',
+            'cargo_id'  =>'1',
         ]);
     }
 }
