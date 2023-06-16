@@ -39,37 +39,32 @@
                                         @csrf
                                         @method('POST')
                                         <div class="form-group">
-                                            <label for="nome">Nome:</label>
-                                            <input placeholder="Selecione o nome" type="text" class="form-control" name="nome" value="" required autofocus>
+                                            <label for="nome">Nome:</label>                                            
+                                            <select name="funcionario_id" id="funcionario_id" class="form-select" required>
+                                                <option value="" disabled selected>Selecione um funcionário</option>
+                                                @foreach($funcionariosUnicos as $funcionario)
+                                                    <option value="{{ $funcionario->id }}">{{ $funcionario->nome }}</option>
+                                                @endforeach                                                
+                                            </select>                                        
                                         </div>
                                         <div class="form-group">
                                             <label for="data">Data:</label>
-                                            <input placeholder="Insira a data:" type="date" class="form-control col-sm-6" name="data" value="" required autofocus>
+                                            <input placeholder="Insira a data" type="date" class="form-control col-sm-6" name="data" value="" required autofocus>
                                         </div> 
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="entrada">Entrada:</label>
-                                                    <input placeholder="Insira o horário de entrada:" type="time" class="form-control" name="entrada" maxlength="6" value="" required>
+                                                    <input placeholder="Insira o horário de entrada" type="time" class="form-control" name="entrada" maxlength="6" value="" required>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="saida">Saída:</label>
-                                                    <input placeholder="Insira o horário de saída:" type="time" class="form-control" name="saida" maxlength="6" value="" required>
+                                                    <input placeholder="Insira o horário de saída" type="time" class="form-control" name="saida" maxlength="6" value="" required>
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        
-                                        <!-- <div class="form-group col-sm-3">
-                                            <label for="entrada">Entrada:</label>
-                                            <input placeholder="Insira o horario de entrada:" type="time" class="form-control" name="entrada" maxlength="6" value="" required>
-                                        </div>
-                                        <div class="form-group col-sm-3">
-                                            <label for="saida">Saida:</label>
-                                            <input placeholder="Insira o horario de saida:" type="time" class="form-control" name="saida" maxlength="6" value="" required>
-                                        </div> -->
+                                        </div>                                        
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                             <button type="submit" id="criar_ponto" class="btn btn-primary">Salvar</button>
@@ -84,7 +79,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col" class="col-sm-3">Nome</th>
+                                    <th scope="col" class="col-sm-4">Nome</th>
                                     <th scope="col" class="col-sm-2">Data</th>                                 
                                     <th scope="col">Entrada</th>                                     
                                     <th scope="col" class="col-sm-3">Saida</th>
@@ -124,20 +119,36 @@
                                                     @method('PUT')
                                                     <div class="form-group">
                                                         <label for="nome">Nome:</label>
-                                                        <input type="text" class="form-control" name="nome" value="{{ $ponto->funcionario_id }}" required autofocus>
+                                                        <select name="funcionario_id" id="funcionario_id" class="form-select" required>
+                                                            <option value="" disabled>Selecione um funcionário</option>
+                                                            @foreach($funcionariosUnicos as $funcionario)
+                                                                <option value="{{ $funcionario->id }}" {{ $ponto->funcionario_id == $funcionario->id ? 'selected' : '' }}>
+                                                                    {{ $funcionario->nome }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>                                                        
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="data">Data:</label>
                                                         <input type="date" class="form-control" name="data" value="{{ $ponto->data }}" required autofocus>
-                                                    </div>                                                                                                      
-                                                    <div class="form-group">
-                                                        <label for="entrada">Entrada:</label>
-                                                        <input type="entrada" class="form-control" name="entrada" maxlength="6" value="{{ $ponto->entrada }}" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="saida">Saida:</label>
-                                                        <input type="saida" class="form-control" name="saida" maxlength="6" value="{{ $ponto->saida }}" required>
-                                                    </div>
+                                                    </div> 
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="entrada">Entrada:</label>
+                                                                <input type="time" class="form-control" name="entrada" maxlength="6" value="{{ $ponto->entrada }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="saida">Saída:</label>
+                                                                <input type="time" class="form-control" name="saida" maxlength="6" value="{{ $ponto->saida }}" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>              
+                                                    
+
+                                                    
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                                         <button type="submit" id="atualizar_ponto" class="btn btn-primary">Atualizar</button>

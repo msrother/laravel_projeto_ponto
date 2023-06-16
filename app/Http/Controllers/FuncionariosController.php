@@ -15,9 +15,12 @@ class FuncionariosController extends Controller
         $funcionarios = Funcionario::paginate($itensPaginas);
 
         $cidades = Cidade::all();
+        $cidadesUnicas = $cidades->unique('nome');
+        
         $cargos  = Cargo::all(); 
+        $cargosUnicos = $cargos->unique('nome');
 
-        return view('base.funcionarios', ['funcionarios' => $funcionarios, 'cidades' => $cidades, 'cargos' => $cargos]);
+        return view('base.funcionarios', ['funcionarios' => $funcionarios, 'cidadesUnicas' => $cidadesUnicas, 'cargosUnicos' => $cargosUnicos]);
     }
 
     public function deletar_funcionario($id)

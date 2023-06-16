@@ -58,7 +58,7 @@
                                             <label for="cidade">Cidade:</label>                                                                                        
                                             <select name="cidade_id" id="cidade_id" class="form-select" required>
                                                 <option value="" disabled selected>Selecione uma cidade</option>
-                                                @foreach($cidades as $cidade)
+                                                @foreach($cidadesUnicas as $cidade)
                                                     <option value="{{ $cidade->id }}">{{ $cidade->nome }}</option>
                                                 @endforeach                                                
                                             </select>                                            
@@ -67,7 +67,7 @@
                                             <label for="cargo">Cargo:</label>                                                                                       
                                             <select name="cargo_id" id="cargo_id" class="form-select" required>
                                                 <option value="" disabled selected>Selecione o cargo</option>
-                                                @foreach($cargos as $cargo)
+                                                @foreach($cargosUnicos as $cargo)
                                                     <option value="{{ $cargo->id }}">{{ $cargo->nome }}</option>
                                                 @endforeach                                                                                 
                                             </select>
@@ -148,7 +148,7 @@
                                                         <label for="cidade">Cidade:</label>
                                                         <select name="cidade_id" id="cidade_id" class="form-select" required>
                                                             <option value="" disabled>Selecione uma cidade</option>
-                                                            @foreach($cidades as $cidade)
+                                                            @foreach($cidadesUnicas as $cidade)
                                                                 <option value="{{ $cidade->id }}" {{ $funcionario->cidade_id == $cidade->id ? 'selected' : '' }}>
                                                                     {{ $cidade->nome }}
                                                                 </option>
@@ -159,7 +159,7 @@
                                                         <label for="cargo">Cargo:</label>
                                                         <select name="cargo_id" id="cargo_id" class="form-select" required>
                                                             <option value="" disabled>Selecione o cargo</option>
-                                                            @foreach($cargos as $cargo)
+                                                            @foreach($cargosUnicos as $cargo)
                                                                 <option value="{{ $cargo->id }}" {{ $funcionario->cargo_id == $cargo->id ? 'selected' : '' }}>
                                                                     {{ $cargo->nome }}
                                                                 </option>

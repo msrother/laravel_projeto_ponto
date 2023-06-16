@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ponto;
+use App\Models\Funcionario;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +14,10 @@ class PontosController extends Controller
         $itensPaginas = 5; // número de itens por página
         $pontos = Ponto::paginate($itensPaginas);
 
-        return view('base.pontos', ['pontos' => $pontos]);
+        $funcionarios = Funcionario::all();
+        $funcionariosUnicos = $funcionarios->unique('nome');      
+
+        return view('base.pontos', ['pontos' => $pontos, 'funcionariosUnicos' => $funcionariosUnicos]);
     }
 
     public function deletar_ponto($id)
