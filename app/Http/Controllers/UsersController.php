@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UsersController extends Controller
 {
-    public function index()
+    public function index_user()
     {
         // DESCRIÇÃO: Usado para listar todas as colunas da tabela users
 
@@ -48,7 +48,7 @@ class UsersController extends Controller
 
         $user = new user;
         $user->updateUser($id, $request->name, $request->email);
-        return redirect('/users');
+        return redirect('/users')->with('success', 'Registro atualizado com sucesso!');
         
         // SEM MODEL
 

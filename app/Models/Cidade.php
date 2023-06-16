@@ -8,9 +8,7 @@ class Cidade extends Model
 
 {
     protected $table = 'cidades';
-
     protected $fillable = ['nome', 'uf'];
-    
     
 
     public function updateCidade($id, $nome, $uf)

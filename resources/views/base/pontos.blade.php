@@ -3,7 +3,8 @@
 
 @section('content')
 <head>   
-    <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">  
+    <link rel="stylesheet" href="{{ asset('css/estilo.css') }}"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet"> 
 </head>
 <div class="container">
     <div class="row justify-content-center">
@@ -11,7 +12,7 @@
             <div class="card">
                 <div class="card-header titulo" style="display: flex; justify-content: space-between; align-items: center;">{{ __('Registro de Ponto') }}                          
                     <button type="button" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#insertPontoModal">
-                        <i aria-hidden="true" class="fa fa-fw fa-user-plus"></i> Novo Registro    
+                        <i class="bi bi-plus-circle"></i>   
                     </button>                       
                 </div>
 
@@ -23,14 +24,65 @@
                         <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">&times;</button>
                     </div>
                     @endif
+                    <!-- Novo Registro -->
+                    <div class="modal fade" id="insertPontoModal" tabindex="-1" role="dialog" aria-labelledby="insertPontoModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="insertPontoModalLabel">Registrar ponto</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" action="{{ url('/pontos/') }}">
+                                        @csrf
+                                        @method('POST')
+                                        <div class="form-group">
+                                            <label for="nome">Nome:</label>                                            
+                                            <select name="funcionario_id" id="funcionario_id" class="form-select" required>
+                                                <option value="" disabled selected>Selecione um funcionário</option>
+                                                @foreach($funcionariosUnicos as $funcionario)
+                                                    <option value="{{ $funcionario->id }}">{{ $funcionario->nome }}</option>
+                                                @endforeach                                                
+                                            </select>                                        
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="data">Data:</label>
+                                            <input placeholder="Insira a data" type="date" class="form-control col-sm-6" name="data" value="" required autofocus>
+                                        </div> 
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="entrada">Entrada:</label>
+                                                    <input placeholder="Insira o horário de entrada" type="time" class="form-control" name="entrada" maxlength="6" value="" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="saida">Saída:</label>
+                                                    <input placeholder="Insira o horário de saída" type="time" class="form-control" name="saida" maxlength="6" value="" required>
+                                                </div>
+                                            </div>
+                                        </div>                                        
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <button type="submit" id="criar_ponto" class="btn btn-primary">Salvar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     @if (isset($pontos))  {{-- Caso não encontre nenhum registro de ponto --}}
                         <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Data</th>                                 
+                                    <th scope="col" class="col-sm-4">Nome</th>
+                                    <th scope="col" class="col-sm-2">Data</th>                                 
                                     <th scope="col">Entrada</th>                                     
-                                    <th scope="col">Saida</th>
+                                    <th scope="col" class="col-sm-3">Saida</th>
                                     <th scope="col">Ações</th>                                    
                                 </tr>
                             </thead>
@@ -38,55 +90,19 @@
                                 @foreach ($pontos as $ponto)
                                 <tr>                                
                                     <th scope="row">{{ $ponto->id }}</th>
+                                    <td>{{ $ponto->converterIdFuncionario->nome }}</td>
                                     <td>{{ $ponto->data }}</td>                                                                     
                                     <td>{{ $ponto->entrada }}</td> 
                                     <td>{{ $ponto->saida }}</td>                                                                       
                                     <td>                                               
                                         <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#updatePontoModal{{ $ponto->id }}">
-                                            Editar
+                                            <i class="bi bi-pencil-fill"></i>
                                         </button>
                                         <button type="button" class="btn btn-sm btn-outline-danger" onclick="deletePonto({{ $ponto->id }}, '{{ $ponto->data }}')">
-                                            Excluir
+                                            <i class="bi bi-trash-fill"></i>
                                         </button>                                       
                                     </td>
                                 </tr>
-
-                                <!-- Novo Registro -->
-                                <div class="modal fade" id="insertPontoModal" tabindex="-1" role="dialog" aria-labelledby="insertPontoModalLabel{{ $ponto->id }}" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="insertPontoModalLabel{{ $ponto->id }}">Registrar ponto</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="{{ url('/pontos/'.$ponto->id) }}">
-                                                    @csrf
-                                                    @method('POST')
-                                                    <div class="form-group">
-                                                        <label for="data">Data:</label>
-                                                        <input placeholder="Insira a data:" type="date" class="form-control" name="data" value="" required autofocus>
-                                                    </div>                                                                                                      
-                                                    <div class="form-group">
-                                                        <label for="entrada">Entrada:</label>
-                                                        <input placeholder="Insira o horario de entrada:" type="time" class="form-control" name="entrada" maxlength="6" value="" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="saida">Saida:</label>
-                                                        <input placeholder="Insira o horario de saida:" type="time" class="form-control" name="saida" maxlength="6" value="" required>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                        <button type="submit" id="criar_ponto" class="btn btn-primary">Salvar</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <!-- Atualizar Registro -->
                                 <div class="modal fade" id="updatePontoModal{{ $ponto->id }}" tabindex="-1" role="dialog" aria-labelledby="updatePontoModalLabel{{ $ponto->id }}" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -102,17 +118,37 @@
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="form-group">
+                                                        <label for="nome">Nome:</label>
+                                                        <select name="funcionario_id" id="funcionario_id" class="form-select" required>
+                                                            <option value="" disabled>Selecione um funcionário</option>
+                                                            @foreach($funcionariosUnicos as $funcionario)
+                                                                <option value="{{ $funcionario->id }}" {{ $ponto->funcionario_id == $funcionario->id ? 'selected' : '' }}>
+                                                                    {{ $funcionario->nome }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>                                                        
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label for="data">Data:</label>
                                                         <input type="date" class="form-control" name="data" value="{{ $ponto->data }}" required autofocus>
-                                                    </div>                                                                                                      
-                                                    <div class="form-group">
-                                                        <label for="entrada">Entrada:</label>
-                                                        <input type="entrada" class="form-control" name="entrada" maxlength="6" value="{{ $ponto->entrada }}" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="saida">Saida:</label>
-                                                        <input type="saida" class="form-control" name="saida" maxlength="6" value="{{ $ponto->saida }}" required>
-                                                    </div>
+                                                    </div> 
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="entrada">Entrada:</label>
+                                                                <input type="time" class="form-control" name="entrada" maxlength="6" value="{{ $ponto->entrada }}" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="saida">Saída:</label>
+                                                                <input type="time" class="form-control" name="saida" maxlength="6" value="{{ $ponto->saida }}" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>              
+                                                    
+
+                                                    
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                                         <button type="submit" id="atualizar_ponto" class="btn btn-primary">Atualizar</button>
