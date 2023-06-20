@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Controller\CargosController;
+use App\Controller\CidadesController;
+use App\Controller\FuncionariosController;
+use App\Controller\PontosController;
+use App\Controller\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,9 +64,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //users administrativos
-Route::get('/users', [App\Http\Controllers\UsersController::class, 'index']);
+Route::get('/users', [App\Http\Controllers\UsersController::class, 'index_user'])->name('index_user');;
 
-Route::post('/users/{id}',[App\Http\Controllers\UsersController::class, 'criar_user'])->name('criar_user');
+Route::post('/users',[App\Http\Controllers\UsersController::class, 'criar_user'])->name('criar_user');
 
 Route::put('/users/{id}',[App\Http\Controllers\UsersController::class, 'atualizar_user'])->name('atualizar_user');
 
@@ -69,9 +74,9 @@ Route::delete('/users/{id}',[App\Http\Controllers\UsersController::class, 'delet
 
 
 //funcionários
-Route::get('/funcionarios', [App\Http\Controllers\FuncionariosController::class, 'index']);
+Route::get('/funcionarios', [App\Http\Controllers\FuncionariosController::class, 'index_funcionario'])->name('index_funcionario');
 
-Route::post('/funcionarios/{id}',[App\Http\Controllers\FuncionariosController::class, 'criar_funcionario'])->name('criar_funcionario');
+Route::post('/funcionarios',[App\Http\Controllers\FuncionariosController::class, 'criar_funcionario'])->name('criar_funcionario');
 
 Route::put('/funcionarios/{id}',[App\Http\Controllers\FuncionariosController::class, 'atualizar_funcionario'])->name('atualizar_funcionario');
 
@@ -79,38 +84,32 @@ Route::delete('/funcionarios/{id}',[App\Http\Controllers\FuncionariosController:
 
 
 //cidades
-Route::get('/cidades', [App\Http\Controllers\CidadesController::class, 'index']);
+Route::get('/cidades', [App\Http\Controllers\CidadesController::class, 'index_cidade'])->name('index_cidade');
 
-Route::post('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'criar_cidade'])->name('criar_cidade');
+Route::post('/cidades',[App\Http\Controllers\CidadesController::class, 'criar_cidade'])->name('criar_cidade');
 
 Route::put('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'atualizar_cidade'])->name('atualizar_cidade');
 
 Route::delete('/cidades/{id}',[App\Http\Controllers\CidadesController::class, 'deletar_cidade'])->name('deletar_cidade');
 
 
-//ponto
-Route::get('/pontos', [App\Http\Controllers\PontosController::class, 'index']);
-
-Route::post('/pontos/{id}',[App\Http\Controllers\PontosController::class, 'criar_ponto'])->name('criar_ponto');
-
-Route::put('/pontos/{id}',[App\Http\Controllers\PontosController::class, 'atualizar_ponto'])->name('atualizar_ponto');
-
-Route::delete('/pontos/{id}',[App\Http\Controllers\PontosController::class, 'deletar_ponto'])->name('deletar_ponto');
-
-
-
-
 //cargos
-Route::get('/cargos', [App\Http\Controllers\CargosController::class, 'index']);
+Route::get('/cargos', [App\Http\Controllers\CargosController::class, 'index_cargo'])->name('index_cargo');
 
-Route::post('/cargos/{id}',[App\Http\Controllers\CargosController::class, 'criar_cargo'])->name('criar_cargo');
+Route::post('/cargos',[App\Http\Controllers\CargosController::class, 'criar_cargo'])->name('criar_cargo');
 
 Route::put('/cargos/{id}',[App\Http\Controllers\CargosController::class, 'atualizar_cargo'])->name('atualizar_cargo');
 
 Route::delete('/cargos/{id}',[App\Http\Controllers\CargosController::class, 'deletar_cargo'])->name('deletar_cargo');
 
 
-
-
 //pontos
+Route::get('/pontos', [App\Http\Controllers\PontosController::class, 'index_ponto'])->name('index_ponto');;
+
+Route::post('/pontos',[App\Http\Controllers\PontosController::class, 'criar_ponto'])->name('criar_ponto');
+
+Route::put('/pontos/{id}',[App\Http\Controllers\PontosController::class, 'atualizar_ponto'])->name('atualizar_ponto');
+
+Route::delete('/pontos/{id}',[App\Http\Controllers\PontosController::class, 'deletar_ponto'])->name('deletar_ponto');
+
 

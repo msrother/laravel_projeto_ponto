@@ -4,7 +4,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-    
+   
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,12 +22,12 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     {{-- Vite quais arquivos devem ser compilados e preparados para serem entregues ao navegador como parte do processo de build de um aplicativo web. --}}
 </head>
-<body>
+<body>          
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand nomeProjeto" href="{{ url('/') }}">
-                    Controle de Ponto de Funcionários
+                <a class="navbar-brand nomeProjeto" href="{{ url('/home') }}">
+                    Home    |   Controle de Ponto 
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -45,7 +45,7 @@
                         @guest <!-- Diretiva do blade que permite mostrar apenas os conteudos para usuarios não autenticados -->                                                    
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Entrar') }}</a>
                                 </li>
                             @endif
 
@@ -61,33 +61,27 @@
                                 </li>
                             @endif
                         @else
-                        
+                                                 
                             @if (Route::has('noticias'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('noticias') }}">{{ __('Noticias') }}</a>  {{-- Suporta lang --}}                                
+                                    <a class="nav-link" href="{{ route('noticias') }}">{{ __('Notícias') }}</a>  {{-- Suporta lang --}}                                
                                 </li>
                             @endif
-
-                            @if (Route::has('users'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('users') }}">{{ __('Usuários Administrativos') }}</a>                             
-                                </li>
-                            @endif
-
-                            @if (Route::has('funcionarios'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('funcionarios') }}">{{ __('Funcionários') }}</a>                             
-                                </li>
-                            @endif
-
-                            @if (Route::has('cidades'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('cidades') }}">{{ __('Cidades') }}</a>                             
-                                </li>
-                            @endif
-
-                            
+                                                        
                             <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Manutenção
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">                                                                     
+                                    <a class="dropdown-item" href="{{ route('index_cargo') }}">Cargos</a>
+                                    <a class="dropdown-item" href="{{ route('index_cidade') }}">Cidades</a>                                    
+                                    <a class="dropdown-item" href="{{ route('index_funcionario') }}">Funcionários</a>
+                                    <a class="dropdown-item" href="{{ route('index_ponto') }}">Pontos</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ route('index_user') }}">Usuários administrativos</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">    
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>

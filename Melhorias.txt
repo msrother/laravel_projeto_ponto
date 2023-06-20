@@ -1,0 +1,8 @@
+[ok] Mudar estrutura após usuário fizer login na plataforma. (dica pode redirecionar para a pagina que o usuário vai ter mais acesso)
+
+[ok] Quando logado aparecer a barra principal, no momento está aparecendo apenas o nome do usuário e noticias.
+	* Na pasta resources->views->layout->app existe uma diretiva chamada @guest, onde é possivel 
+	fazer essa validação quando o usuário está ou não logado
+
+[em trabalho] 
+Para usar a FK no campo funcionarios corretamente, é necessario olhar para a estrutura das cidades, da maneira que foi feita ele está percorrendo os funcionarios para achar essa informação
